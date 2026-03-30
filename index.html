@@ -1,96 +1,235 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Allan Zossi Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #f4efe8;
-    }
-    section {
-      padding: 80px 40px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h1, h2 {
-      margin-bottom: 20px;
-    }
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 20px;
-    }
-  </style>
-</head>
+export default function AllanZossiPortfolio() {
+  const projects = [
+    {
+      number: '01',
+      title: 'Le corps et l’espace',
+      category: 'Recherche plastique',
+      image:
+        'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
+      description:
+        'Dans ce projet, des moulages de mains en béton deviennent des formes architecturales. Le contraste entre la souplesse du corps et la rigidité du matériau interroge le lien entre l’humain, le geste et la construction de l’espace.',
+    },
+    {
+      number: '02',
+      title: 'Le rêveur de la forêt',
+      category: 'Installation conceptuelle',
+      image:
+        'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80',
+      description:
+        'Une écorce en papier mâché brûlée au chalumeau devient le support d’un parcours symbolique composé d’escaliers, d’échelles et d’une porte fermée. Le projet évoque une quête intérieure, entre mémoire, rêve et imaginaire.',
+    },
+    {
+      number: '03',
+      title: 'Meuble de séparation',
+      category: 'Design de mobilier',
+      image:
+        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
+      description:
+        'Ce meuble multifonction organise l’espace en réunissant plusieurs usages du quotidien : repas, travail, rangement, assise et coin multimédia. Il structure le volume tout en optimisant les circulations et les ambiances.',
+    },
+    {
+      number: '04',
+      title: 'Cabane de surveillance en mer',
+      category: 'Micro-architecture',
+      image:
+        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+      description:
+        'Pensée comme un kit démontable, cette cabane légère s’assemble sans outils, vis ni colle. Son système d’encoches permet une construction simple, transportable et accessible, adaptée à un contexte isolé en bord de mer.',
+    },
+    {
+      number: '05',
+      title: 'Guinguette',
+      category: 'Aménagement extérieur',
+      image:
+        'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
+      description:
+        'Le projet propose une guinguette modulaire implantée sur un terrain en pente. La répétition des structures et la hauteur constante des piliers créent un jeu de perception entre uniformité, dénivelé et variation spatiale.',
+    },
+    {
+      number: '06',
+      title: 'Projet de stage',
+      category: 'Aménagement intérieur',
+      image:
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80',
+      description:
+        'Le projet consiste en l’aménagement des combles d’un bâtiment ancien, avec la création d’un espace de vie regroupant salon, cuisine et salle à manger. Un meuble multifonction structure les circulations, tandis qu’un faux plafond accompagne l’entrée et renforce la perception du volume principal.',
+    },
+    {
+      number: '07',
+      title: 'Retail – Le Chocolat des Français',
+      category: 'Design retail',
+      image:
+        'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=1200&q=80',
+      description:
+        'Le projet propose un espace de vente pensé comme un parcours immersif, mettant en avant la transparence de la marque sur ses produits. À travers la mise en scène de l’origine, de la fabrication et du produit, l’aménagement transforme l’achat en une véritable expérience de marque.',
+    },
+    {
+      number: '08',
+      title: 'Episaveurs – Aménagement extérieur',
+      category: 'Espace de pause',
+      image:
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
+      description:
+        'Le projet propose un aménagement extérieur destiné aux employés, structuré par une seconde peau en polycarbonate qui accompagne le bâtiment. Cette structure crée un espace de pause protégé, filtre les vues, laisse passer la lumière et s’organise autour d’assises intégrant du végétal.',
+    },
+  ];
 
-<body>
+  const skills = [
+    'Architecture intérieure',
+    'Aménagement d’espace',
+    'Design de mobilier',
+    'Micro-architecture',
+    'Design retail',
+    'Modélisation 3D',
+    'Recherche conceptuelle',
+    'Rendu visuel',
+  ];
 
-<section>
-  <h1>ALLAN ZOSSI</h1>
-  <p>Architecture d’intérieur</p>
-  <p>Approche entre matière, usage et perception.</p>
-</section>
+  return (
+    <div className="min-h-screen bg-[#111111] text-[#f4efe8]">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#111111]/85 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-white/50">Portfolio</p>
+            <h1 className="text-lg font-semibold tracking-[0.2em]">ALLAN ZOSSI</h1>
+          </div>
+          <nav className="hidden gap-6 text-sm text-white/70 md:flex">
+            <a href="#apropos" className="hover:text-white transition">À propos</a>
+            <a href="#projets" className="hover:text-white transition">Projets</a>
+            <a href="#competences" className="hover:text-white transition">Compétences</a>
+            <a href="#contact" className="hover:text-white transition">Contact</a>
+          </nav>
+        </div>
+      </header>
 
-<section>
-  <h2>Projets</h2>
+      <section className="border-b border-white/10">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:grid-cols-[1.2fr_0.8fr] md:py-28">
+          <div className="space-y-8">
+            <p className="text-sm uppercase tracking-[0.35em] text-white/50">Architecture d’intérieur</p>
+            <h2 className="max-w-4xl text-5xl font-semibold leading-tight md:text-7xl">
+              Des espaces sensibles, narratifs et pensés autour de la matière.
+            </h2>
+            <p className="max-w-2xl text-base leading-8 text-white/70 md:text-lg">
+              Je développe une approche de l’espace à la croisée de l’architecture intérieure, du mobilier et de la recherche plastique. Mon travail explore les liens entre matière, usage et perception, à travers des projets sensibles, fonctionnels et narratifs.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a href="#projets" className="rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black transition hover:scale-[1.02]">
+                Voir les projets
+              </a>
+              <a href="#contact" className="rounded-2xl border border-white/15 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/5">
+                Me contacter
+              </a>
+            </div>
+          </div>
 
-  <div class="projects">
+          <div className="grid gap-4">
+            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+              <p className="text-sm uppercase tracking-[0.3em] text-white/50">Approche</p>
+              <ul className="mt-6 space-y-4 text-sm leading-7 text-white/75">
+                <li>• Dialogue entre organique et architectural</li>
+                <li>• Attention portée aux usages et aux circulations</li>
+                <li>• Importance de la narration spatiale</li>
+                <li>• Goût pour les matériaux bruts et les formes sobres</li>
+              </ul>
+            </div>
+            <div className="rounded-[2rem] border border-white/10 bg-[#171717] p-8">
+              <p className="text-sm uppercase tracking-[0.3em] text-white/50">Domaines</p>
+              <div className="mt-6 flex flex-wrap gap-3 text-sm text-white/80">
+                {['Architecture intérieure', 'Design mobilier', 'Retail', 'Aménagement extérieur', 'Micro-architecture'].map((item) => (
+                  <span key={item} className="rounded-full border border-white/10 px-4 py-2">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <div class="card">
-      <h3>Le corps et l’espace</h3>
-      <p>Moulages en béton transformés en formes architecturales.</p>
+      <section id="apropos" className="border-b border-white/10">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:grid-cols-[0.8fr_1.2fr] md:py-24">
+          <div>
+            <p className="text-sm uppercase tracking-[0.35em] text-white/50">À propos</p>
+            <h3 className="mt-4 text-3xl font-semibold md:text-4xl">Une pratique entre émotion, fonction et expérimentation.</h3>
+          </div>
+          <div className="space-y-6 text-base leading-8 text-white/75">
+            <p>
+              Je m’intéresse à la manière dont les formes, les matériaux et les circulations influencent notre perception de l’espace. Mon portfolio rassemble des projets d’architecture intérieure, de micro-architecture, de mobilier et d’aménagement, où l’expérimentation formelle dialogue avec des usages concrets.
+            </p>
+            <p>
+              Qu’il s’agisse d’une installation conceptuelle, d’un espace de vente, d’un mobilier multifonction ou d’un lieu de pause, je cherche toujours à proposer des espaces lisibles, sensibles et cohérents avec leur contexte.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projets" className="mx-auto max-w-7xl px-6 py-20 md:py-24">
+        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-sm uppercase tracking-[0.35em] text-white/50">Sélection</p>
+            <h3 className="mt-4 text-3xl font-semibold md:text-5xl">Projets</h3>
+          </div>
+          <p className="max-w-2xl text-sm leading-7 text-white/60 md:text-base">
+            Une sélection de projets mêlant architecture intérieure, mobilier, retail, micro-architecture et aménagement extérieur.
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          {projects.map((project) => (
+            <article key={project.title} className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#171717]">
+              <div
+                className="h-72 w-full bg-cover bg-center"
+                style={{ backgroundImage: `url(${project.image})` }}
+              />
+              <div className="p-7">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.25em] text-white/40">{project.number}</p>
+                    <h4 className="mt-3 text-2xl font-semibold">{project.title}</h4>
+                  </div>
+                  <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/60">
+                    {project.category}
+                  </span>
+                </div>
+                <p className="mt-6 text-sm leading-7 text-white/70 md:text-base">{project.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="competences" className="border-y border-white/10 bg-[#151515]">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
+          <div className="mb-10">
+            <p className="text-sm uppercase tracking-[0.35em] text-white/50">Compétences</p>
+            <h3 className="mt-4 text-3xl font-semibold md:text-5xl">Savoir-faire</h3>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            {skills.map((skill) => (
+              <span key={skill} className="rounded-full border border-white/10 px-5 py-3 text-sm text-white/75">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="mx-auto max-w-7xl px-6 py-20 md:py-24">
+        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-10 md:p-14">
+          <p className="text-sm uppercase tracking-[0.35em] text-white/50">Contact</p>
+          <h3 className="mt-4 max-w-3xl text-3xl font-semibold md:text-5xl">
+            Disponible pour stages, collaborations et projets en architecture intérieure.
+          </h3>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-white/70">
+            Remplace ce bloc par tes vraies coordonnées pour permettre aux recruteurs, agences ou clients de te contacter facilement.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4 text-sm text-white/80">
+            <span className="rounded-full border border-white/10 px-4 py-2">email@exemple.com</span>
+            <span className="rounded-full border border-white/10 px-4 py-2">Instagram / Behance</span>
+            <span className="rounded-full border border-white/10 px-4 py-2">Ville</span>
+          </div>
+        </div>
+      </section>
     </div>
-
-    <div class="card">
-      <h3>Le rêveur de la forêt</h3>
-      <p>Parcours symbolique entre escaliers, matière et imaginaire.</p>
-    </div>
-
-    <div class="card">
-      <h3>Meuble de séparation</h3>
-      <p>Mobilier multifonction structurant l’espace.</p>
-    </div>
-
-    <div class="card">
-      <h3>Cabane de surveillance</h3>
-      <p>Architecture démontable simple et transportable.</p>
-    </div>
-
-    <div class="card">
-      <h3>Guinguette</h3>
-      <p>Structure modulaire jouant avec la topographie.</p>
-    </div>
-
-    <div class="card">
-      <h3>Projet de stage</h3>
-      <p>Aménagement de combles avec mobilier structurant.</p>
-    </div>
-
-    <div class="card">
-      <h3>Retail Chocolat</h3>
-      <p>Parcours immersif autour de la transparence.</p>
-    </div>
-
-    <div class="card">
-      <h3>Episaveurs</h3>
-      <p>Espace extérieur de pause avec structure filtrante.</p>
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <h2>Contact</h2>
-  <p>Email : tonmail@email.com</p>
-</section>
-
-</body>
-</html>
+  );
+}
