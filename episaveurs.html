@@ -158,6 +158,57 @@
       border-radius:16px;
     }
 
+    /* BLOCS INTERACTIFS */
+    .interactive-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-bottom:20px;
+    }
+
+    .interactive-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:10px;
+    }
+
+    .interactive-viewer{
+      position:relative;
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .interactive-viewer img{
+      height:500px;
+      object-fit:contain;
+      background:#222;
+      border-radius:16px;
+      transition:opacity .25s ease;
+    }
+
+    .interactive-caption{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-top:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .interactive-badge{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      white-space:nowrap;
+    }
+
+    .hint{
+      color:rgba(244,239,232,.52);
+      font-size:13px;
+    }
+
     footer{
       padding:28px 0 50px;
       color:rgba(255,255,255,.48);
@@ -166,7 +217,8 @@
 
     @media (max-width:900px){
       .project-head,
-      .gallery{
+      .gallery,
+      .interactive-section{
         grid-template-columns:1fr;
       }
 
@@ -178,7 +230,8 @@
         height:360px;
       }
 
-      .card img{
+      .card img,
+      .interactive-viewer img{
         height:280px;
       }
 
@@ -234,7 +287,7 @@
       <img src="images/epi-1.png" alt="Image principale du projet Episaveurs">
     </div>
 
-    <!-- GRID -->
+    <!-- GRID 2 à 7 -->
     <div class="gallery">
       <div class="card"><img src="images/epi-2.png" alt="Image 2 du projet Episaveurs"></div>
       <div class="card"><img src="images/epi-3.png" alt="Image 3 du projet Episaveurs"></div>
@@ -242,18 +295,38 @@
       <div class="card"><img src="images/epi-5.png" alt="Image 5 du projet Episaveurs"></div>
       <div class="card"><img src="images/epi-6.png" alt="Image 6 du projet Episaveurs"></div>
       <div class="card"><img src="images/epi-7.png" alt="Image 7 du projet Episaveurs"></div>
-      <div class="card"><img src="images/epi-8.png" alt="Image 8 du projet Episaveurs"></div>
-      <div class="card"><img src="images/epi-9.png" alt="Image 9 du projet Episaveurs"></div>
-      <div class="card"><img src="images/epi-10.png" alt="Image 10 du projet Episaveurs"></div>
-      <div class="card"><img src="images/epi-11.png" alt="Image 11 du projet Episaveurs"></div>
-      <div class="card"><img src="images/epi-12.png" alt="Image 12 du projet Episaveurs"></div>
-      <div class="card"><img src="images/epi-13.png" alt="Image 13 du projet Episaveurs"></div>
-      <div class="card"><img src="images/epi-14.png" alt="Image 14 du projet Episaveurs"></div>
     </div>
 
-    <!-- HERO BOTTOM -->
+    <!-- HERO MILIEU -->
     <div class="hero-img">
-      <img src="images/epi-15.png" alt="Image finale du projet Episaveurs">
+      <img src="images/epi-8.png" alt="Image 8 du projet Episaveurs">
+    </div>
+
+    <!-- INTERACTIONS -->
+    <div class="interactive-section">
+
+      <!-- 9 à 12 -->
+      <div class="interactive-card">
+        <div class="interactive-viewer" id="viewerA">
+          <img id="viewerAImg" src="images/epi-9.png" alt="Séquence d'images 9 à 12 du projet Episaveurs">
+        </div>
+        <div class="interactive-caption">
+          <span class="interactive-badge" id="viewerALabel">Image 9 / 12</span>
+          <span class="hint">Clique sur l’image pour voir la suivante</span>
+        </div>
+      </div>
+
+      <!-- 13 à 15 -->
+      <div class="interactive-card">
+        <div class="interactive-viewer" id="viewerB">
+          <img id="viewerBImg" src="images/epi-13.png" alt="Séquence d'images 13 à 15 du projet Episaveurs">
+        </div>
+        <div class="interactive-caption">
+          <span class="interactive-badge" id="viewerBLabel">Image 13 / 15</span>
+          <span class="hint">Clique sur l’image pour voir la suivante</span>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -262,6 +335,44 @@
 <footer>
   <div class="container">Portfolio d’Allan Zossi</div>
 </footer>
+
+<script>
+  const viewerAImages = [
+    "images/epi-9.png",
+    "images/epi-10.png",
+    "images/epi-11.png",
+    "images/epi-12.png"
+  ];
+
+  const viewerBImages = [
+    "images/epi-13.png",
+    "images/epi-14.png",
+    "images/epi-15.png"
+  ];
+
+  let viewerAIndex = 0;
+  let viewerBIndex = 0;
+
+  const viewerA = document.getElementById("viewerA");
+  const viewerAImg = document.getElementById("viewerAImg");
+  const viewerALabel = document.getElementById("viewerALabel");
+
+  const viewerB = document.getElementById("viewerB");
+  const viewerBImg = document.getElementById("viewerBImg");
+  const viewerBLabel = document.getElementById("viewerBLabel");
+
+  viewerA.addEventListener("click", () => {
+    viewerAIndex = (viewerAIndex + 1) % viewerAImages.length;
+    viewerAImg.src = viewerAImages[viewerAIndex];
+    viewerALabel.textContent = `Image ${9 + viewerAIndex} / 12`;
+  });
+
+  viewerB.addEventListener("click", () => {
+    viewerBIndex = (viewerBIndex + 1) % viewerBImages.length;
+    viewerBImg.src = viewerBImages[viewerBIndex];
+    viewerBLabel.textContent = `Image ${13 + viewerBIndex} / 15`;
+  });
+</script>
 
 </body>
 </html>
