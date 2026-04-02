@@ -36,20 +36,12 @@
       margin:auto;
     }
 
-    img{
-      width:100%;
-      height:auto;
-      object-fit:contain;
-      display:block;
-      border-radius:18px;
-    }
-
     /* NAV */
     .nav{
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(17,17,17,.9);
+      background:rgba(17,17,17,.92);
       border-bottom:1px solid var(--line);
     }
 
@@ -71,6 +63,7 @@
       display:flex;
       gap:20px;
       color:var(--muted);
+      flex-wrap:wrap;
     }
 
     /* HERO */
@@ -89,6 +82,7 @@
       grid-template-columns:1fr 1fr;
       gap:30px;
       margin-bottom:40px;
+      align-items:start;
     }
 
     h1{
@@ -107,36 +101,53 @@
       gap:18px;
     }
 
-    /* STYLE CADRE (important pour contain) */
     .frame{
       background:var(--frame);
       padding:10px;
       border-radius:24px;
       border:1px solid var(--line);
+      overflow:hidden;
     }
 
-    /* GRID */
+    /* Important : cadre fixe + contain = image entière visible */
+    .hero-frame{
+      height:700px;
+    }
+
+    .grid-frame{
+      height:420px;
+    }
+
+    .rect-frame{
+      height:420px;
+    }
+
+    .frame img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+      border-radius:16px;
+    }
+
     .grid-4{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:18px;
     }
 
-    /* RECTANGLES */
     .rectangles{
       display:flex;
       flex-direction:column;
       gap:18px;
     }
 
-    /* FOOTER */
     footer{
       padding:40px;
       text-align:center;
       color:rgba(255,255,255,.5);
     }
 
-    /* RESPONSIVE */
     @media(max-width:900px){
       .project-head{
         grid-template-columns:1fr;
@@ -148,6 +159,15 @@
 
       .grid-4{
         grid-template-columns:1fr;
+      }
+
+      .hero-frame{
+        height:420px;
+      }
+
+      .grid-frame,
+      .rect-frame{
+        height:320px;
       }
     }
   </style>
@@ -189,33 +209,33 @@
 
     <div class="project-gallery">
 
-      <!-- IMAGE PRINCIPALE -->
-      <div class="frame">
+      <!-- Grande image -->
+      <div class="frame hero-frame">
         <img src="images/guinguette-1.png" alt="Vue principale du projet Guinguette">
       </div>
 
-      <!-- 4 IMAGES -->
+      <!-- 4 images en grille -->
       <div class="grid-4">
-        <div class="frame">
+        <div class="frame grid-frame">
           <img src="images/guinguette-2.png" alt="Vue 2 du projet Guinguette" loading="lazy">
         </div>
-        <div class="frame">
+        <div class="frame grid-frame">
           <img src="images/guinguette-3.png" alt="Vue 3 du projet Guinguette" loading="lazy">
         </div>
-        <div class="frame">
+        <div class="frame grid-frame">
           <img src="images/guinguette-4.png" alt="Vue 4 du projet Guinguette" loading="lazy">
         </div>
-        <div class="frame">
+        <div class="frame grid-frame">
           <img src="images/guinguette-5.png" alt="Vue 5 du projet Guinguette" loading="lazy">
         </div>
       </div>
 
-      <!-- IMAGES HORIZONTALES -->
+      <!-- 2 images horizontales -->
       <div class="rectangles">
-        <div class="frame">
+        <div class="frame rect-frame">
           <img src="images/guinguette-6.png" alt="Plan du projet Guinguette" loading="lazy">
         </div>
-        <div class="frame">
+        <div class="frame rect-frame">
           <img src="images/guinguette-7.png" alt="Élévation du projet Guinguette" loading="lazy">
         </div>
       </div>
