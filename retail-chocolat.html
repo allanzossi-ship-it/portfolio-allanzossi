@@ -12,16 +12,15 @@
       --text:#f4efe8;
       --muted:rgba(244,239,232,.72);
       --line:rgba(255,255,255,.09);
-      --accent:#e7ddcf;
     }
 
     *{box-sizing:border-box}
+
     body{
       margin:0;
-      font-family:Inter,Arial,Helvetica,sans-serif;
+      font-family:Inter,Arial,sans-serif;
       background:var(--bg);
       color:var(--text);
-      line-height:1.6;
     }
 
     a{text-decoration:none;color:inherit}
@@ -36,7 +35,6 @@
     .nav{
       position:sticky;
       top:0;
-      z-index:10;
       background:rgba(17,17,17,.9);
       border-bottom:1px solid var(--line);
     }
@@ -44,26 +42,12 @@
     .nav-inner{
       display:flex;
       justify-content:space-between;
-      align-items:center;
       padding:18px 0;
     }
 
-    .brand small{
-      display:block;
-      letter-spacing:.3em;
-      font-size:11px;
-      color:var(--muted);
-    }
-
-    .menu{
-      display:flex;
-      gap:20px;
-      color:var(--muted);
-    }
-
-    /* HERO */
+    /* HERO SECTION */
     .project{
-      padding:70px 0 40px;
+      padding:70px 0;
     }
 
     .back{
@@ -82,15 +66,27 @@
     h1{
       margin:0;
       font-size:clamp(42px,8vw,80px);
-      line-height:1;
     }
 
     .project-copy{
       color:var(--muted);
-      font-size:17px;
     }
 
-    /* GALERIE */
+    /* HERO IMAGE */
+    .hero-img{
+      margin-bottom:20px;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--line);
+    }
+
+    .hero-img img{
+      height:520px;
+      object-fit:contain;
+      background:#222;
+    }
+
+    /* GRID */
     .gallery{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -123,12 +119,12 @@
         grid-template-columns:1fr;
       }
 
-      .card img{
-        height:300px;
+      .hero-img img{
+        height:350px;
       }
 
-      .menu{
-        display:none;
+      .card img{
+        height:280px;
       }
     }
   </style>
@@ -138,16 +134,8 @@
 
 <header class="nav">
   <div class="container nav-inner">
-    <div class="brand">
-      <small>Portfolio</small>
-      <strong>ALLAN ZOSSI</strong>
-    </div>
-
-    <nav class="menu">
-      <a href="index.html">Accueil</a>
-      <a href="index.html#projets">Projets</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+    <div>ALLAN ZOSSI</div>
+    <div>Portfolio</div>
   </div>
 </header>
 
@@ -157,45 +145,30 @@
     <a href="index.html" class="back">← Retour</a>
 
     <div class="project-head">
-      <div>
-        <h1>Retail</h1>
-      </div>
+      <h1>Retail</h1>
 
       <div class="project-copy">
         <p>
-          Le projet propose un espace de vente pour Le Chocolat des Français,
-          pensé comme un parcours immersif autour de la transparence. Chaque
-          étape du parcours révèle le produit et l’univers graphique de la
-          marque, transformant l’achat en expérience.
+          Le projet propose un espace de vente immersif pour Le Chocolat des Français,
+          mettant en scène la transparence du produit et l’univers graphique de la marque.
         </p>
       </div>
     </div>
 
+    <!-- HERO IMAGE -->
+    <div class="hero-img">
+      <img src="images/retail-1.png" alt="Image principale Retail">
+    </div>
+
+    <!-- GRID -->
     <div class="gallery">
-      <div class="card">
-        <img src="images/retail-1.png">
-      </div>
-      <div class="card">
-        <img src="images/retail-2.png">
-      </div>
-      <div class="card">
-        <img src="images/retail-3.png">
-      </div>
-      <div class="card">
-        <img src="images/retail-4.png">
-      </div>
-      <div class="card">
-        <img src="images/retail-5.png">
-      </div>
-      <div class="card">
-        <img src="images/retail-6.png">
-      </div>
-      <div class="card">
-        <img src="images/retail-7.png">
-      </div>
-      <div class="card">
-        <img src="images/retail-8.png">
-      </div>
+      <div class="card"><img src="images/retail-2.png"></div>
+      <div class="card"><img src="images/retail-3.png"></div>
+      <div class="card"><img src="images/retail-4.png"></div>
+      <div class="card"><img src="images/retail-5.png"></div>
+      <div class="card"><img src="images/retail-6.png"></div>
+      <div class="card"><img src="images/retail-7.png"></div>
+      <div class="card"><img src="images/retail-8.png"></div>
     </div>
 
   </div>
