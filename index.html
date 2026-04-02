@@ -1,270 +1,199 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Allan Zossi — Portfolio</title>
-  <style>
-    :root {
-      --bg: #111111;
-      --panel: #181818;
-      --text: #f4efe8;
-      --muted: rgba(244, 239, 232, 0.72);
-      --line: rgba(255,255,255,0.09);
-      --accent: #e7ddcf;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
-    .nav {
-      position: sticky; top: 0; z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(17,17,17,0.86);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 0;
-    }
-    .brand small {
-      display:block; text-transform: uppercase; letter-spacing: .3em; color: var(--muted); font-size: 11px;
-    }
-    .brand strong { letter-spacing: .16em; font-size: 18px; }
-    .menu { display:flex; gap:22px; color: var(--muted); font-size: 14px; }
-    .hero {
-      padding: 96px 0 72px;
-      border-bottom: 1px solid var(--line);
-    }
-    .hero-grid {
-      display:grid; grid-template-columns: 1.2fr .8fr; gap: 36px;
-    }
-    .eyebrow {
-      text-transform: uppercase; letter-spacing: .35em; color: var(--muted); font-size: 12px;
-      margin-bottom: 20px;
-    }
-    h1 {
-      margin: 0 0 22px;
-      font-size: clamp(42px, 8vw, 82px);
-      line-height: .98;
-      max-width: 850px;
-    }
-    .lead {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 18px;
-    }
-    .actions { display:flex; gap:14px; margin-top: 30px; flex-wrap: wrap; }
-    .btn {
-      border:1px solid var(--line);
-      padding: 13px 20px;
-      border-radius: 18px;
-      display:inline-block;
-    }
-    .btn.primary {
-      background: var(--accent);
-      color: #111;
-      border-color: transparent;
-      font-weight: 600;
-    }
-    .side-card {
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 28px;
-    }
-    .side-card h3, .section h2 {
-      margin: 0 0 14px;
-      font-size: 28px;
-    }
-    .side-card ul { margin: 0; padding-left: 18px; color: var(--muted); }
-    .section {
-      padding: 74px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .about-grid {
-      display:grid; grid-template-columns: .75fr 1.25fr; gap: 36px;
-    }
-    .about-text { color: var(--muted); font-size: 17px; }
-    .projects-grid {
-      display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px;
-      margin-top: 28px;
-    }
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      overflow: hidden;
-    }
-    .card img {
-      width:100%; height: 320px; object-fit: cover; display:block;
-      background:#222;
-    }
-    .card-body { padding: 24px; }
-    .meta {
-      display:flex; justify-content: space-between; gap: 14px; align-items: start;
-    }
-    .num {
-      color: rgba(255,255,255,.38);
-      text-transform: uppercase;
-      letter-spacing: .25em;
-      font-size: 12px;
-    }
-    .tag {
-      border:1px solid var(--line);
-      color: var(--muted);
-      border-radius: 999px;
-      font-size: 12px;
-      padding: 6px 10px;
-      white-space: nowrap;
-    }
-    .card h3 { margin: 10px 0 0; font-size: 28px; line-height: 1.1; }
-    .card p { color: var(--muted); margin: 18px 0 0; font-size: 15px; }
-    .skills {
-      display:flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;
-    }
-    .skill {
-      border:1px solid var(--line); border-radius:999px; padding:10px 14px; color: var(--muted);
-    }
-    .contact {
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 34px;
-    }
-    .contact p { color: var(--muted); max-width: 680px; }
-    .contact-row { display:flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
-    .pill { border: 1px solid var(--line); border-radius:999px; padding:10px 14px; }
-    footer { padding: 28px 0 50px; color: rgba(255,255,255,.48); font-size: 14px; }
-    @media (max-width: 900px) {
-      .hero-grid, .about-grid, .projects-grid { grid-template-columns: 1fr; }
-      .menu { display:none; }
-      .card img { height: 250px; }
-      .hero { padding-top: 72px; }
-    }
-  </style>
-</head>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allan Zossi — Portfolio</title><style>
+:root{
+  --bg:#111111; --panel:#181818; --text:#f4efe8; --muted:rgba(244,239,232,.72);
+  --line:rgba(255,255,255,.09); --accent:#e7ddcf;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{width:min(1180px,calc(100% - 40px));margin:0 auto}
+.nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:rgba(17,17,17,.86);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.brand small{display:block;text-transform:uppercase;letter-spacing:.3em;color:var(--muted);font-size:11px}
+.brand strong{letter-spacing:.16em;font-size:18px}
+.menu{display:flex;gap:22px;color:var(--muted);font-size:14px}
+.hero{padding:96px 0 72px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px}
+.eyebrow{text-transform:uppercase;letter-spacing:.35em;color:var(--muted);font-size:12px;margin-bottom:20px}
+h1{margin:0 0 22px;font-size:clamp(42px,8vw,82px);line-height:.98;max-width:850px}
+h2{margin:0 0 14px;font-size:28px}
+.lead{max-width:760px;color:var(--muted);font-size:18px}
+.actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);padding:13px 20px;border-radius:18px;display:inline-block}
+.btn.primary{background:var(--accent);color:#111;border-color:transparent;font-weight:600}
+.side-card,.contact{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:30px;padding:28px}
+.side-card ul{margin:0;padding-left:18px;color:var(--muted)}
+.section{padding:74px 0;border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:36px}
+.about-text{color:var(--muted);font-size:17px}
+.projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:28px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:30px;overflow:hidden}
+.card img{width:100%;height:320px;object-fit:cover;background:#222}
+.card-body{padding:24px}
+.meta{display:flex;justify-content:space-between;gap:14px;align-items:start}
+.num{color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.25em;font-size:12px}
+.tag{border:1px solid var(--line);color:var(--muted);border-radius:999px;font-size:12px;padding:6px 10px;white-space:nowrap}
+.card h3,.project-head h1{margin:10px 0 0;font-size:28px;line-height:1.1}
+.card p,.project-copy,.contact p{color:var(--muted)}
+.skills,.contact-row{display:flex;flex-wrap:wrap;gap:12px}
+.skill,.pill{border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--muted)}
+footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
+.project-hero{padding:70px 0 24px;border-bottom:1px solid var(--line)}
+.project-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:end}
+.project-gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
+.project-gallery img{width:100%;border-radius:24px;border:1px solid var(--line);background:#222}
+.back{display:inline-block;margin:20px 0 0;color:var(--muted)}
+@media (max-width:900px){
+  .hero-grid,.about-grid,.projects-grid,.project-head,.project-gallery{grid-template-columns:1fr}
+  .menu{display:none}.card img{height:250px}.hero{padding-top:72px}
+}
+</style></head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand">
-        <small>Portfolio</small>
-        <strong>ALLAN ZOSSI</strong>
-      </div>
-      <nav class="menu">
-        <a href="#apropos">À propos</a>
-        <a href="#projets">Projets</a>
-        <a href="#competences">Compétences</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<header class="nav"><div class="container nav-inner"><div class="brand"><small>Portfolio</small><strong>ALLAN ZOSSI</strong></div>
+<nav class="menu"><a href="#apropos">À propos</a><a href="#projets">Projets</a><a href="#competences">Compétences</a><a href="#contact">Contact</a></nav></div></header>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Architecture d’intérieur</div>
-        <h1>Des espaces sensibles, narratifs et pensés autour de la matière.</h1>
-        <p class="lead">
-          Je développe une approche de l’espace à la croisée de l’architecture intérieure, du mobilier et de la recherche plastique.
-          Mon travail explore les liens entre matière, usage et perception, à travers des projets sensibles, fonctionnels et narratifs.
-        </p>
-        <div class="actions">
-          <a class="btn primary" href="#projets">Voir les projets</a>
-          <a class="btn" href="#contact">Me contacter</a>
+<section class="hero"><div class="container hero-grid">
+<div><div class="eyebrow">Architecture d’intérieur</div><h1>Des espaces sensibles, narratifs et pensés autour de la matière.</h1>
+<p class="lead">Je développe une approche de l’espace à la croisée de l’architecture intérieure, du mobilier et de la recherche plastique. Mon travail explore les liens entre matière, usage et perception, à travers des projets sensibles, fonctionnels et narratifs.</p>
+<div class="actions"><a class="btn primary" href="#projets">Voir les projets</a><a class="btn" href="#contact">Me contacter</a></div></div>
+<div class="side-card"><div class="eyebrow" style="margin-bottom:14px;">Approche</div><h2>Une pratique entre émotion, fonction et expérimentation.</h2>
+<ul><li>Dialogue entre organique et architectural</li><li>Attention portée aux usages et aux circulations</li><li>Importance de la narration spatiale</li><li>Goût pour les matériaux bruts et les formes sobres</li></ul></div>
+</div></section>
+
+<section class="section" id="apropos"><div class="container about-grid">
+<div><div class="eyebrow">À propos</div><h2>Une pratique entre émotion, fonction et expérimentation.</h2></div>
+<div class="about-text"><p>Je m’intéresse à la manière dont les formes, les matériaux et les circulations influencent notre perception de l’espace. Mon portfolio rassemble des projets d’architecture intérieure, de micro-architecture, de mobilier et d’aménagement, où l’expérimentation formelle dialogue avec des usages concrets.</p>
+<p>Qu’il s’agisse d’une installation conceptuelle, d’un espace de vente, d’un mobilier multifonction ou d’un lieu de pause, je cherche toujours à proposer des espaces lisibles, sensibles et cohérents avec leur contexte.</p></div>
+</div></section>
+
+<section class="section" id="projets"><div class="container">
+<div class="eyebrow">Sélection</div><h2>Projets</h2><div class="projects-grid">
+        <article class="card">
+          <a href="corps-espace.html">
+            <img src="images/corps-1.png" alt="Le corps et l’espace">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">01</div><h3>Le corps et l’espace</h3></div>
+              <div class="tag">Recherche plastique</div>
+            </div>
+            <p>Dans ce projet, des moulages de mains en béton deviennent des formes architecturales. Le contraste entre la souplesse du corps et la rigidité du matériau interroge le lien entre l’humain, le geste et la construction de l’espace.</p>
+            <p style="margin-top:16px;"><a class="btn" href="corps-espace.html">Voir le projet</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <a href="reveur-foret.html">
+            <img src="images/reveur-1.png" alt="Le rêveur de la forêt">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">02</div><h3>Le rêveur de la forêt</h3></div>
+              <div class="tag">Installation conceptuelle</div>
+            </div>
+            <p>Une écorce en papier mâché brûlée au chalumeau devient le support d’un parcours symbolique composé d’escaliers, d’échelles et d’une porte fermée. Le projet évoque une quête intérieure, entre mémoire, rêve et imaginaire.</p>
+            <p style="margin-top:16px;"><a class="btn" href="reveur-foret.html">Voir le projet</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <a href="meuble-separation.html">
+            <img src="images/meuble-1.png" alt="Meuble de séparation">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">03</div><h3>Meuble de séparation</h3></div>
+              <div class="tag">Design de mobilier</div>
+            </div>
+            <p>Ce meuble multifonction organise l’espace en réunissant plusieurs usages du quotidien : repas, travail, rangement, assise et coin multimédia. Il structure le volume tout en optimisant les circulations et les ambiances.</p>
+            <p style="margin-top:16px;"><a class="btn" href="meuble-separation.html">Voir le projet</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <a href="cabane-mer.html">
+            <img src="images/cabane-1.png" alt="Cabane de surveillance en mer">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">04</div><h3>Cabane de surveillance en mer</h3></div>
+              <div class="tag">Micro-architecture</div>
+            </div>
+            <p>Pensée comme un kit démontable, cette cabane légère s’assemble sans outils, vis ni colle. Son système d’encoches permet une construction simple, transportable et accessible, adaptée à un contexte isolé en bord de mer.</p>
+            <p style="margin-top:16px;"><a class="btn" href="cabane-mer.html">Voir le projet</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <a href="guinguette.html">
+            <img src="images/guinguette-1.png" alt="Guinguette">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">05</div><h3>Guinguette</h3></div>
+              <div class="tag">Aménagement extérieur</div>
+            </div>
+            <p>Le projet propose une guinguette modulaire implantée sur un terrain en pente. La répétition des structures et la hauteur constante des piliers créent un jeu de perception entre uniformité, dénivelé et variation spatiale.</p>
+            <p style="margin-top:16px;"><a class="btn" href="guinguette.html">Voir le projet</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <a href="projet-stage.html">
+            <img src="images/stage-1.png" alt="Projet de stage">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">06</div><h3>Projet de stage</h3></div>
+              <div class="tag">Aménagement intérieur</div>
+            </div>
+            <p>Le projet consiste en l’aménagement des combles d’un bâtiment ancien, avec la création d’un espace de vie regroupant salon, cuisine et salle à manger. Un meuble multifonction structure les circulations, tandis qu’un faux plafond accompagne l’entrée et renforce la perception du volume principal.</p>
+            <p style="margin-top:16px;"><a class="btn" href="projet-stage.html">Voir le projet</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <a href="retail-chocolat.html">
+            <img src="images/retail-1.png" alt="Retail – Le Chocolat des Français">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">07</div><h3>Retail – Le Chocolat des Français</h3></div>
+              <div class="tag">Design retail</div>
+            </div>
+            <p>Le projet propose un espace de vente pensé comme un parcours immersif, mettant en avant la transparence de la marque sur ses produits. À travers la mise en scène de l’origine, de la fabrication et du produit, l’aménagement transforme l’achat en une véritable expérience de marque.</p>
+            <p style="margin-top:16px;"><a class="btn" href="retail-chocolat.html">Voir le projet</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <a href="episaveurs.html">
+            <img src="images/epi-1.png" alt="Episaveurs – Aménagement extérieur">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">08</div><h3>Episaveurs – Aménagement extérieur</h3></div>
+              <div class="tag">Espace de pause</div>
+            </div>
+            <p>Le projet propose un aménagement extérieur destiné aux employés, structuré par une seconde peau en polycarbonate qui accompagne le bâtiment. Cette structure crée un espace de pause protégé, filtre les vues, laisse passer la lumière et s’organise autour d’assises intégrant du végétal.</p>
+            <p style="margin-top:16px;"><a class="btn" href="episaveurs.html">Voir le projet</a></p>
+          </div>
+        </article>
         </div>
-      </div>
-      <div class="side-card">
-        <div class="eyebrow" style="margin-bottom:14px;">Approche</div>
-        <h3>Une pratique entre émotion, fonction et expérimentation.</h3>
-        <ul>
-          <li>Dialogue entre organique et architectural</li>
-          <li>Attention portée aux usages et aux circulations</li>
-          <li>Importance de la narration spatiale</li>
-          <li>Goût pour les matériaux bruts et les formes sobres</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+</div></section>
 
-  <section class="section" id="apropos">
-    <div class="container about-grid">
-      <div>
-        <div class="eyebrow">À propos</div>
-        <h2>Une pratique entre émotion, fonction et expérimentation.</h2>
-      </div>
-      <div class="about-text">
-        <p>
-          Je m’intéresse à la manière dont les formes, les matériaux et les circulations influencent notre perception de l’espace.
-          Mon portfolio rassemble des projets d’architecture intérieure, de micro-architecture, de mobilier et d’aménagement,
-          où l’expérimentation formelle dialogue avec des usages concrets.
-        </p>
-        <p>
-          Qu’il s’agisse d’une installation conceptuelle, d’un espace de vente, d’un mobilier multifonction ou d’un lieu de pause,
-          je cherche toujours à proposer des espaces lisibles, sensibles et cohérents avec leur contexte.
-        </p>
-      </div>
-    </div>
-  </section>
+<section class="section" id="competences"><div class="container"><div class="eyebrow">Compétences</div><h2>Savoir-faire</h2>
+<div class="skills"><div class="skill">Architecture intérieure</div><div class="skill">Aménagement d’espace</div><div class="skill">Design de mobilier</div><div class="skill">Micro-architecture</div><div class="skill">Design retail</div><div class="skill">Modélisation 3D</div><div class="skill">Recherche conceptuelle</div><div class="skill">Rendu visuel</div></div>
+</div></section>
 
-  <section class="section" id="projets">
-    <div class="container">
-      <div class="eyebrow">Sélection</div>
-      <h2>Projets</h2>
-      <div class="projects-grid">
-        <article class="card"><img src="images/corps-espace.png" alt="Le corps et l’espace"><div class="card-body"><div class="meta"><div><div class="num">01</div><h3>Le corps et l’espace</h3></div><div class="tag">Recherche plastique</div></div><p>Dans ce projet, des moulages de mains en béton deviennent des formes architecturales. Le contraste entre la souplesse du corps et la rigidité du matériau interroge le lien entre l’humain, le geste et la construction de l’espace.</p></div></article>
-        <article class="card"><img src="images/reveur-foret.png" alt="Le rêveur de la forêt"><div class="card-body"><div class="meta"><div><div class="num">02</div><h3>Le rêveur de la forêt</h3></div><div class="tag">Installation conceptuelle</div></div><p>Une écorce en papier mâché brûlée au chalumeau devient le support d’un parcours symbolique composé d’escaliers, d’échelles et d’une porte fermée. Le projet évoque une quête intérieure, entre mémoire, rêve et imaginaire.</p></div></article>
-        <article class="card"><img src="images/meuble-separation.png" alt="Meuble de séparation"><div class="card-body"><div class="meta"><div><div class="num">03</div><h3>Meuble de séparation</h3></div><div class="tag">Design de mobilier</div></div><p>Ce meuble multifonction organise l’espace en réunissant plusieurs usages du quotidien : repas, travail, rangement, assise et coin multimédia. Il structure le volume tout en optimisant les circulations et les ambiances.</p></div></article>
-        <article class="card"><img src="images/cabane-mer.png" alt="Cabane de surveillance en mer"><div class="card-body"><div class="meta"><div><div class="num">04</div><h3>Cabane de surveillance en mer</h3></div><div class="tag">Micro-architecture</div></div><p>Pensée comme un kit démontable, cette cabane légère s’assemble sans outils, vis ni colle. Son système d’encoches permet une construction simple, transportable et accessible, adaptée à un contexte isolé en bord de mer.</p></div></article>
-        <article class="card"><img src="images/guinguette.png" alt="Guinguette"><div class="card-body"><div class="meta"><div><div class="num">05</div><h3>Guinguette</h3></div><div class="tag">Aménagement extérieur</div></div><p>Le projet propose une guinguette modulaire implantée sur un terrain en pente. La répétition des structures et la hauteur constante des piliers créent un jeu de perception entre uniformité, dénivelé et variation spatiale.</p></div></article>
-        <article class="card"><img src="images/projet-stage.png" alt="Projet de stage"><div class="card-body"><div class="meta"><div><div class="num">06</div><h3>Projet de stage</h3></div><div class="tag">Aménagement intérieur</div></div><p>Le projet consiste en l’aménagement des combles d’un bâtiment ancien, avec la création d’un espace de vie regroupant salon, cuisine et salle à manger. Un meuble multifonction structure les circulations, tandis qu’un faux plafond accompagne l’entrée et renforce la perception du volume principal.</p></div></article>
-        <article class="card"><img src="images/retail-chocolat.png" alt="Retail – Le Chocolat des Français"><div class="card-body"><div class="meta"><div><div class="num">07</div><h3>Retail – Le Chocolat des Français</h3></div><div class="tag">Design retail</div></div><p>Le projet propose un espace de vente pensé comme un parcours immersif, mettant en avant la transparence de la marque sur ses produits. À travers la mise en scène de l’origine, de la fabrication et du produit, l’aménagement transforme l’achat en une véritable expérience de marque.</p></div></article>
-        <article class="card"><img src="images/episaveurs.png" alt="Episaveurs – Aménagement extérieur"><div class="card-body"><div class="meta"><div><div class="num">08</div><h3>Episaveurs – Aménagement extérieur</h3></div><div class="tag">Espace de pause</div></div><p>Le projet propose un aménagement extérieur destiné aux employés, structuré par une seconde peau en polycarbonate qui accompagne le bâtiment. Cette structure crée un espace de pause protégé, filtre les vues, laisse passer la lumière et s’organise autour d’assises intégrant du végétal.</p></div></article>
-      </div>
-    </div>
-  </section>
+<section class="section" id="contact"><div class="container"><div class="contact">
+<div class="eyebrow">Contact</div><h2>Disponible pour stages, collaborations et projets en architecture intérieure.</h2>
+<p>N’hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
+<div class="contact-row"><div class="pill">allanzossi57@gmail.com</div><div class="pill">Reims</div><div class="pill">Nancy</div><div class="pill">Metz</div></div>
+</div></div></section>
 
-  <section class="section" id="competences">
-    <div class="container">
-      <div class="eyebrow">Compétences</div>
-      <h2>Savoir-faire</h2>
-      <div class="skills">
-        <div class="skill">Architecture intérieure</div>
-        <div class="skill">Aménagement d’espace</div>
-        <div class="skill">Design de mobilier</div>
-        <div class="skill">Micro-architecture</div>
-        <div class="skill">Design retail</div>
-        <div class="skill">Modélisation 3D</div>
-        <div class="skill">Recherche conceptuelle</div>
-        <div class="skill">Rendu visuel</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="contact">
-        <div class="eyebrow">Contact</div>
-        <h2>Disponible pour stages, collaborations et projets en architecture intérieure.</h2>
-        <p>Remplace ce bloc par tes vraies coordonnées pour permettre aux recruteurs, agences ou clients de te contacter facilement.</p>
-        <div class="contact-row">
-          <div class="pill">email@exemple.com</div>
-          <div class="pill">Instagram / Behance</div>
-          <div class="pill">Ville</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">Portfolio d’Allan Zossi</div>
-  </footer>
-</body>
-</html>
+<footer><div class="container">Portfolio d’Allan Zossi</div></footer>
+</body></html>
