@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guinguette — Allan Zossi</title>
+  <title>Portfolio — Allan Zossi</title>
 
   <style>
     :root{
@@ -15,12 +15,17 @@
       --accent:#e7ddcf;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       margin:0;
-      font-family:Inter,Arial,Helvetica,sans-serif;
+      font-family:Inter, Arial, Helvetica, sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.6;
@@ -37,7 +42,7 @@
     }
 
     .container{
-      width:min(1180px,calc(100% - 40px));
+      width:min(1180px, calc(100% - 40px));
       margin:0 auto;
     }
 
@@ -77,15 +82,16 @@
       font-size:14px;
     }
 
-    .project-hero{
-      padding:70px 0 32px;
+    .hero{
+      padding:96px 0 72px;
       border-bottom:1px solid var(--line);
     }
 
-    .back{
-      display:inline-block;
-      margin:20px 0 28px;
-      color:var(--muted);
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:36px;
+      align-items:start;
     }
 
     .eyebrow{
@@ -96,51 +102,153 @@
       margin-bottom:20px;
     }
 
-    .project-head{
-      display:grid;
-      grid-template-columns:.8fr 1.2fr;
-      gap:28px;
-      align-items:end;
-      margin-bottom:32px;
-    }
-
     h1{
-      margin:0;
+      margin:0 0 22px;
       font-size:clamp(42px,8vw,82px);
       line-height:.98;
+      max-width:850px;
     }
 
-    .project-copy{
+    h2{
+      margin:0 0 14px;
+      font-size:28px;
+    }
+
+    .lead{
+      max-width:760px;
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .actions{
+      display:flex;
+      gap:14px;
+      margin-top:30px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border:1px solid var(--line);
+      padding:13px 20px;
+      border-radius:18px;
+      display:inline-block;
+    }
+
+    .btn.primary{
+      background:var(--accent);
+      color:#111;
+      border-color:transparent;
+      font-weight:600;
+    }
+
+    .side-card,
+    .contact{
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:28px;
+    }
+
+    .side-card ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    .section{
+      padding:74px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:.75fr 1.25fr;
+      gap:36px;
+    }
+
+    .about-text{
       color:var(--muted);
       font-size:17px;
     }
 
-    .project-copy p{
-      margin:0;
-    }
-
-    /* Galerie */
-    .project-gallery{
+    .projects-grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-      margin-top:32px;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:24px;
+      margin-top:28px;
     }
 
-    .gallery-card{
+    .card{
       background:var(--panel);
       border:1px solid var(--line);
-      border-radius:24px;
+      border-radius:30px;
       overflow:hidden;
-      padding:10px;
+      transition:transform .25s ease, border-color .25s ease;
     }
 
-    .gallery-card img{
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(255,255,255,.18);
+    }
+
+    .card img{
       width:100%;
-      height:420px;
-      object-fit:contain;
+      height:320px;
+      object-fit:cover;
       background:#222;
-      border-radius:16px;
+    }
+
+    .card-body{
+      padding:24px;
+    }
+
+    .meta{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:start;
+    }
+
+    .num{
+      color:rgba(255,255,255,.38);
+      text-transform:uppercase;
+      letter-spacing:.25em;
+      font-size:12px;
+    }
+
+    .tag{
+      border:1px solid var(--line);
+      color:var(--muted);
+      border-radius:999px;
+      font-size:12px;
+      padding:6px 10px;
+      white-space:nowrap;
+    }
+
+    .card h3{
+      margin:10px 0 0;
+      font-size:28px;
+      line-height:1.1;
+    }
+
+    .card p,
+    .contact p{
+      color:var(--muted);
+    }
+
+    .skills,
+    .contact-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .skill,
+    .pill{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:10px 14px;
+      color:var(--muted);
     }
 
     footer{
@@ -150,8 +258,9 @@
     }
 
     @media (max-width:900px){
-      .project-head,
-      .project-gallery{
+      .hero-grid,
+      .about-grid,
+      .projects-grid{
         grid-template-columns:1fr;
       }
 
@@ -159,94 +268,151 @@
         display:none;
       }
 
-      .gallery-card img{
-        height:300px;
+      .card img{
+        height:250px;
       }
 
-      .project-hero{
-        padding-top:56px;
+      .hero{
+        padding-top:72px;
       }
     }
   </style>
 </head>
-
 <body>
 
-<header class="nav">
-  <div class="container nav-inner">
-    <div class="brand">
-      <small>Portfolio</small>
-      <strong>ALLAN ZOSSI</strong>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <small>Portfolio</small>
+        <strong>ALLAN ZOSSI</strong>
+      </div>
+
+      <nav class="menu">
+        <a href="#accueil">Accueil</a>
+        <a href="#projets">Projets</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <nav class="menu">
-      <a href="index.html">Accueil</a>
-      <a href="index.html#projets">Projets</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<section class="project-hero">
-  <div class="container">
-
-    <a class="back" href="index.html">← Retour au portfolio</a>
-
-    <div class="project-head">
+  <section id="accueil" class="hero">
+    <div class="container hero-grid">
       <div>
-        <div class="eyebrow">07 · Architecture</div>
-        <h1>Guinguette</h1>
-      </div>
-
-      <div class="project-copy">
-        <p>
-          Le projet propose une guinguette modulaire implantée sur un terrain en pente.
-          La répétition des structures et la hauteur constante des piliers créent un jeu
-          de perception entre uniformité, dénivelé et variation spatiale.
+        <div class="eyebrow">Portfolio</div>
+        <h1>Allan Zossi</h1>
+        <p class="lead">
+          Étudiant en architecture d’intérieur et design, je développe des projets
+          mêlant espace, usage, narration et identité visuelle.
         </p>
+
+        <div class="actions">
+          <a href="#projets" class="btn primary">Voir les projets</a>
+          <a href="#contact" class="btn">Contact</a>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h2>À propos</h2>
+        <ul>
+          <li>Architecture intérieure</li>
+          <li>Design d’espace</li>
+          <li>Retail et scénographie</li>
+          <li>Conception visuelle</li>
+        </ul>
       </div>
     </div>
+  </section>
 
-    <div class="project-gallery">
-      <div class="gallery-card">
-        <img src="images/guinguette-1.png" alt="Image 1 du projet Guinguette">
+  <section class="section">
+    <div class="container about-grid">
+      <div>
+        <h2>Profil</h2>
       </div>
 
-      <div class="gallery-card">
-        <img src="images/guinguette-2.png" alt="Image 2 du projet Guinguette">
-      </div>
+      <div class="about-text">
+        <p>
+          Mon travail explore la relation entre architecture, objets et expérience
+          utilisateur. J’accorde une attention particulière aux ambiances, aux
+          matériaux et à la lisibilité des parcours.
+        </p>
 
-      <div class="gallery-card">
-        <img src="images/guinguette-3.png" alt="Image 3 du projet Guinguette">
-      </div>
-
-      <div class="gallery-card">
-        <img src="images/guinguette-4.png" alt="Image 4 du projet Guinguette">
-      </div>
-
-      <div class="gallery-card">
-        <img src="images/guinguette-5.png" alt="Image 5 du projet Guinguette">
-      </div>
-
-      <div class="gallery-card">
-        <img src="images/guinguette-6.png" alt="Image 6 du projet Guinguette">
-      </div>
-
-      <div class="gallery-card">
-        <img src="images/guinguette-7.png" alt="Image 7 du projet Guinguette">
-      </div>
-
-      <div class="gallery-card">
-        <img src="images/guinguette-8.png" alt="Image 8 du projet Guinguette">
+        <div class="skills">
+          <span class="skill">Architecture</span>
+          <span class="skill">Retail Design</span>
+          <span class="skill">Scénographie</span>
+          <span class="skill">Modélisation 3D</span>
+          <span class="skill">Rendu visuel</span>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <section id="projets" class="section">
+    <div class="container">
+      <h2>Projets</h2>
 
-<footer>
-  <div class="container">Portfolio d’Allan Zossi</div>
-</footer>
+      <div class="projects-grid">
+
+        <!-- GUINGUETTE -->
+        <article class="card">
+          <a href="guinguette.html">
+            <img src="images/guinguette-1.png" alt="Projet Guinguette">
+            <div class="card-body">
+              <div class="meta">
+                <span class="num">01</span>
+                <span class="tag">Architecture</span>
+              </div>
+              <h3>Guinguette</h3>
+              <p>
+                Guinguette modulaire implantée sur un terrain en pente, pensée
+                comme un espace de rencontre et de perception.
+              </p>
+            </div>
+          </a>
+        </article>
+
+        <!-- RETAIL -->
+        <article class="card">
+          <a href="retail.html">
+            <img src="images/retail-1.png" alt="Retail – Le Chocolat des Français">
+            <div class="card-body">
+              <div class="meta">
+                <span class="num">02</span>
+                <span class="tag">Retail</span>
+              </div>
+              <h3>Retail – Le Chocolat des Français</h3>
+              <p>
+                Espace de vente immersif autour de la transparence, de la marque
+                et de l’expérience client.
+              </p>
+            </div>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact">
+        <h2>Contact</h2>
+        <p>
+          Pour toute collaboration, stage ou échange autour d’un projet, tu peux me contacter.
+        </p>
+
+        <div class="contact-row">
+          <span class="pill">allan.zossi@email.com</span>
+          <span class="pill">Paris</span>
+          <span class="pill">Portfolio étudiant</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">Portfolio d’Allan Zossi</div>
+  </footer>
 
 </body>
 </html>
