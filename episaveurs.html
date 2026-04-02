@@ -1,68 +1,267 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Episaveurs – Aménagement extérieur — Allan Zossi</title><style>
-:root{
-  --bg:#111111; --panel:#181818; --text:#f4efe8; --muted:rgba(244,239,232,.72);
-  --line:rgba(255,255,255,.09); --accent:#e7ddcf;
-}
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
-.container{width:min(1180px,calc(100% - 40px));margin:0 auto}
-.nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:rgba(17,17,17,.86);border-bottom:1px solid var(--line)}
-.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-.brand small{display:block;text-transform:uppercase;letter-spacing:.3em;color:var(--muted);font-size:11px}
-.brand strong{letter-spacing:.16em;font-size:18px}
-.menu{display:flex;gap:22px;color:var(--muted);font-size:14px}
-.hero{padding:96px 0 72px;border-bottom:1px solid var(--line)}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px}
-.eyebrow{text-transform:uppercase;letter-spacing:.35em;color:var(--muted);font-size:12px;margin-bottom:20px}
-h1{margin:0 0 22px;font-size:clamp(42px,8vw,82px);line-height:.98;max-width:850px}
-h2{margin:0 0 14px;font-size:28px}
-.lead{max-width:760px;color:var(--muted);font-size:18px}
-.actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
-.btn{border:1px solid var(--line);padding:13px 20px;border-radius:18px;display:inline-block}
-.btn.primary{background:var(--accent);color:#111;border-color:transparent;font-weight:600}
-.side-card,.contact{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:30px;padding:28px}
-.side-card ul{margin:0;padding-left:18px;color:var(--muted)}
-.section{padding:74px 0;border-bottom:1px solid var(--line)}
-.about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:36px}
-.about-text{color:var(--muted);font-size:17px}
-.projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:28px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:30px;overflow:hidden}
-.card img{width:100%;height:320px;object-fit:cover;background:#222}
-.card-body{padding:24px}
-.meta{display:flex;justify-content:space-between;gap:14px;align-items:start}
-.num{color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.25em;font-size:12px}
-.tag{border:1px solid var(--line);color:var(--muted);border-radius:999px;font-size:12px;padding:6px 10px;white-space:nowrap}
-.card h3,.project-head h1{margin:10px 0 0;font-size:28px;line-height:1.1}
-.card p,.project-copy,.contact p{color:var(--muted)}
-.skills,.contact-row{display:flex;flex-wrap:wrap;gap:12px}
-.skill,.pill{border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--muted)}
-footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
-.project-hero{padding:70px 0 24px;border-bottom:1px solid var(--line)}
-.project-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:end}
-.project-gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
-.project-gallery img{width:100%;border-radius:24px;border:1px solid var(--line);background:#222}
-.back{display:inline-block;margin:20px 0 0;color:var(--muted)}
-@media (max-width:900px){
-  .hero-grid,.about-grid,.projects-grid,.project-head,.project-gallery{grid-template-columns:1fr}
-  .menu{display:none}.card img{height:250px}.hero{padding-top:72px}
-}
-</style></head>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Episaveurs – Aménagement extérieur — Allan Zossi</title>
+
+  <style>
+    :root{
+      --bg:#111111;
+      --panel:#181818;
+      --text:#f4efe8;
+      --muted:rgba(244,239,232,.72);
+      --line:rgba(255,255,255,.09);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Inter,Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(1180px,calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(10px);
+      background:rgba(17,17,17,.86);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .brand small{
+      display:block;
+      text-transform:uppercase;
+      letter-spacing:.3em;
+      color:var(--muted);
+      font-size:11px;
+    }
+
+    .brand strong{
+      letter-spacing:.16em;
+      font-size:18px;
+    }
+
+    .menu{
+      display:flex;
+      gap:22px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* PAGE PROJET */
+    .project-hero{
+      padding:70px 0 32px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .back{
+      display:inline-block;
+      margin:20px 0 28px;
+      color:var(--muted);
+    }
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.35em;
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:20px;
+    }
+
+    .project-head{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:28px;
+      align-items:end;
+      margin-bottom:32px;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(42px,8vw,82px);
+      line-height:.98;
+    }
+
+    .project-copy{
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .project-copy p{
+      margin:0;
+    }
+
+    /* HERO */
+    .hero-img{
+      margin-bottom:20px;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:var(--panel);
+      padding:10px;
+    }
+
+    .hero-img img{
+      height:560px;
+      object-fit:contain;
+      background:#222;
+      border-radius:16px;
+    }
+
+    /* GRID */
+    .gallery{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-bottom:20px;
+    }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:10px;
+    }
+
+    .card img{
+      height:420px;
+      object-fit:contain;
+      background:#222;
+      border-radius:16px;
+    }
+
+    footer{
+      padding:28px 0 50px;
+      color:rgba(255,255,255,.48);
+      font-size:14px;
+    }
+
+    @media (max-width:900px){
+      .project-head,
+      .gallery{
+        grid-template-columns:1fr;
+      }
+
+      .menu{
+        display:none;
+      }
+
+      .hero-img img{
+        height:360px;
+      }
+
+      .card img{
+        height:280px;
+      }
+
+      .project-hero{
+        padding-top:56px;
+      }
+    }
+  </style>
+</head>
+
 <body>
-<header class="nav"><div class="container nav-inner"><div class="brand"><small>Portfolio</small><strong>ALLAN ZOSSI</strong></div>
-<nav class="menu"><a href="index.html">Accueil</a><a href="index.html#projets">Projets</a><a href="index.html#contact">Contact</a></nav></div></header>
 
-<section class="project-hero"><div class="container">
-<a class="back" href="index.html">← Retour au portfolio</a>
-<div class="project-head">
-  <div><div class="eyebrow">08 · Espace de pause</div><h1>Episaveurs – Aménagement extérieur</h1></div>
-  <div class="project-copy"><p>Le projet propose un aménagement extérieur destiné aux employés d’Episaveurs, conçu comme un espace de pause protégé et intégré au bâtiment existant. Une structure légère en polycarbonate prolonge l’auvent et filtre les vues, créant un lieu semi-ouvert qui préserve l’intimité tout en laissant passer la lumière. Les assises, accompagnées de végétal, participent à la création d’un environnement sobre, fonctionnel et apaisant.</p></div>
-</div>
-<div class="project-gallery"><img src="images/epi-1.png" alt="Episaveurs – Aménagement extérieur image"><img src="images/epi-2.png" alt="Episaveurs – Aménagement extérieur image"><img src="images/epi-3.png" alt="Episaveurs – Aménagement extérieur image"><img src="images/epi-4.png" alt="Episaveurs – Aménagement extérieur image"></div>
-</div></section>
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="brand">
+      <small>Portfolio</small>
+      <strong>ALLAN ZOSSI</strong>
+    </div>
 
-<footer><div class="container">Portfolio d’Allan Zossi</div></footer>
-</body></html>
+    <nav class="menu">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#projets">Projets</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="project-hero">
+  <div class="container">
+
+    <a class="back" href="index.html">← Retour au portfolio</a>
+
+    <div class="project-head">
+      <div>
+        <div class="eyebrow">08 · Espace de pause</div>
+        <h1>Episaveurs – Aménagement extérieur</h1>
+      </div>
+
+      <div class="project-copy">
+        <p>
+          Le projet propose un aménagement extérieur destiné aux employés d’Episaveurs,
+          conçu comme un espace de pause protégé et intégré au bâtiment existant.
+          Une structure légère en polycarbonate prolonge l’auvent et filtre les vues,
+          créant un lieu semi-ouvert qui préserve l’intimité tout en laissant passer la lumière.
+          Les assises, accompagnées de végétal, participent à la création d’un environnement
+          sobre, fonctionnel et apaisant.
+        </p>
+      </div>
+    </div>
+
+    <!-- HERO TOP -->
+    <div class="hero-img">
+      <img src="images/epi-1.png" alt="Image principale du projet Episaveurs">
+    </div>
+
+    <!-- GRID -->
+    <div class="gallery">
+      <div class="card"><img src="images/epi-2.png" alt="Image 2 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-3.png" alt="Image 3 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-4.png" alt="Image 4 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-5.png" alt="Image 5 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-6.png" alt="Image 6 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-7.png" alt="Image 7 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-8.png" alt="Image 8 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-9.png" alt="Image 9 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-10.png" alt="Image 10 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-11.png" alt="Image 11 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-12.png" alt="Image 12 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-13.png" alt="Image 13 du projet Episaveurs"></div>
+      <div class="card"><img src="images/epi-14.png" alt="Image 14 du projet Episaveurs"></div>
+    </div>
+
+    <!-- HERO BOTTOM -->
+    <div class="hero-img">
+      <img src="images/epi-15.png" alt="Image finale du projet Episaveurs">
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">Portfolio d’Allan Zossi</div>
+</footer>
+
+</body>
+</html>
