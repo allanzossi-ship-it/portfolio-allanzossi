@@ -1,219 +1,318 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guinguette — Allan Zossi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guinguette — Allan Zossi</title>
 
-<style>
-:root{
-  --bg:#111111;
-  --panel:#181818;
-  --text:#f4efe8;
-  --muted:rgba(244,239,232,.72);
-  --line:rgba(255,255,255,.09);
-}
+  <style>
+    :root{
+      --bg:#111111;
+      --panel:#181818;
+      --text:#f4efe8;
+      --muted:rgba(244,239,232,.72);
+      --line:rgba(255,255,255,.09);
+    }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter,Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+    *{
+      box-sizing:border-box;
+    }
 
-/* NAV */
-.nav{
-  position:sticky;
-  top:0;
-  background:rgba(17,17,17,.9);
-  border-bottom:1px solid var(--line);
-}
+    html{
+      scroll-behavior:smooth;
+    }
 
-.nav-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 0;
-}
+    body{
+      margin:0;
+      font-family:Inter, Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
 
-.container{
-  width:min(1180px,calc(100% - 40px));
-  margin:0 auto;
-}
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
-.brand small{
-  letter-spacing:.3em;
-  font-size:11px;
-  color:var(--muted);
-}
+    img{
+      display:block;
+      width:100%;
+      border-radius:24px;
+      border:1px solid var(--line);
+    }
 
-.brand strong{
-  font-size:18px;
-}
+    .container{
+      width:min(1180px, calc(100% - 40px));
+      margin:0 auto;
+    }
 
-.menu{
-  display:flex;
-  gap:20px;
-  color:var(--muted);
-}
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(17,17,17,.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
 
-a{color:inherit;text-decoration:none}
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
 
-/* HERO */
-.project-hero{
-  padding:70px 0;
-}
+    .brand small{
+      display:block;
+      letter-spacing:.3em;
+      font-size:11px;
+      color:var(--muted);
+      margin-bottom:2px;
+      text-transform:uppercase;
+    }
 
-.project-head{
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:28px;
-}
+    .brand strong{
+      font-size:18px;
+      font-weight:700;
+    }
 
-h1{
-  font-size:60px;
-  margin:0;
-}
+    .menu{
+      display:flex;
+      gap:20px;
+      color:var(--muted);
+      flex-wrap:wrap;
+    }
 
-.project-copy{
-  color:var(--muted);
-}
+    .menu a:hover,
+    .back-link:hover{
+      color:var(--text);
+    }
 
-/* ===== NOUVEAU LAYOUT ===== */
+    /* HERO */
+    .project-hero{
+      padding:70px 0 40px;
+    }
 
-.project-gallery{
-  margin-top:40px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
+    .back-link{
+      display:inline-block;
+      margin-bottom:28px;
+      color:var(--muted);
+      font-size:15px;
+    }
 
-/* IMAGE PRINCIPALE */
-.hero-img img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:24px;
-  border:1px solid var(--line);
-}
+    .project-head{
+      display:grid;
+      grid-template-columns:0.9fr 1.1fr;
+      gap:28px;
+      align-items:start;
+      margin-bottom:40px;
+    }
 
-/* GRID 4 */
-.grid-4{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
+    h1{
+      font-size:clamp(40px, 6vw, 68px);
+      line-height:1;
+      margin:0;
+      font-weight:700;
+      letter-spacing:-0.03em;
+    }
 
-.grid-4 img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:24px;
-  border:1px solid var(--line);
-}
+    .project-copy{
+      color:var(--muted);
+      max-width:700px;
+    }
 
-/* RECTANGLES */
-.rectangles{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
+    .project-copy p{
+      margin:0;
+      font-size:16px;
+    }
 
-.rectangles img{
-  width:100%;
-  height:260px;
-  object-fit:cover;
-  border-radius:24px;
-  border:1px solid var(--line);
-}
+    /* GALERIE */
+    .project-gallery{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
 
-/* FOOTER */
-footer{
-  padding:40px 0;
-  text-align:center;
-  color:rgba(255,255,255,.5);
-}
+    /* grande image */
+    .hero-img img{
+      aspect-ratio:16 / 9;
+      object-fit:cover;
+    }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .project-head{
-    grid-template-columns:1fr;
-  }
+    /* grille 4 images */
+    .grid-4{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
 
-  h1{
-    font-size:40px;
-  }
-}
-</style>
+    .grid-4 img{
+      aspect-ratio:4 / 3;
+      object-fit:cover;
+    }
+
+    /* images horizontales du bas */
+    .rectangles{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .rectangles img{
+      aspect-ratio:16 / 7;
+      object-fit:cover;
+    }
+
+    /* effet léger au survol */
+    .hero-img,
+    .grid-4 div,
+    .rectangles div{
+      overflow:hidden;
+      border-radius:24px;
+    }
+
+    .hero-img img,
+    .grid-4 img,
+    .rectangles img{
+      transition:transform .45s ease;
+    }
+
+    .hero-img:hover img,
+    .grid-4 div:hover img,
+    .rectangles div:hover img{
+      transform:scale(1.02);
+    }
+
+    /* FOOTER */
+    footer{
+      padding:40px 20px 50px;
+      text-align:center;
+      color:rgba(255,255,255,.5);
+      font-size:14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:900px){
+      .project-head{
+        grid-template-columns:1fr;
+      }
+
+      .grid-4{
+        grid-template-columns:1fr;
+      }
+
+      .hero-img img{
+        aspect-ratio:4 / 3;
+      }
+
+      .rectangles img{
+        aspect-ratio:16 / 9;
+      }
+    }
+
+    @media (max-width:600px){
+      .nav-inner{
+        flex-direction:column;
+        gap:12px;
+      }
+
+      .menu{
+        justify-content:center;
+      }
+
+      .container{
+        width:min(100% - 24px, 1180px);
+      }
+
+      .project-hero{
+        padding:42px 0 24px;
+      }
+
+      .back-link{
+        margin-bottom:20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="nav">
-  <div class="container nav-inner">
-    <div class="brand">
-      <small>Portfolio</small>
-      <strong>ALLAN ZOSSI</strong>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <small>Portfolio</small>
+        <strong>ALLAN ZOSSI</strong>
+      </div>
+
+      <nav class="menu">
+        <a href="index.html">Accueil</a>
+        <a href="index.html#projets">Projets</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
     </div>
-    <nav class="menu">
-      <a href="index.html">Accueil</a>
-      <a href="index.html#projets">Projets</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+  </header>
 
-<section class="project-hero">
-<div class="container">
+  <section class="project-hero">
+    <div class="container">
 
-<a href="index.html">← Retour</a>
+      <a href="index.html" class="back-link">← Retour</a>
 
-<div class="project-head">
-  <div>
-    <h1>Guinguette</h1>
-  </div>
+      <div class="project-head">
+        <div>
+          <h1>Guinguette</h1>
+        </div>
 
-  <div class="project-copy">
-    <p>
-      Le projet propose une guinguette modulaire implantée sur un terrain en pente.
-      La répétition des structures et la hauteur constante des piliers créent un jeu
-      de perception entre uniformité, dénivelé et variation spatiale.
-    </p>
-  </div>
-</div>
+        <div class="project-copy">
+          <p>
+            Le projet propose une guinguette modulaire implantée sur un terrain en pente.
+            La répétition des structures et la hauteur constante des piliers créent un jeu
+            de perception entre uniformité, dénivelé et variation spatiale.
+          </p>
+        </div>
+      </div>
 
-<!-- ===== GALERIE ===== -->
+      <div class="project-gallery">
 
-<div class="project-gallery">
+        <!-- IMAGE PRINCIPALE -->
+        <div class="hero-img">
+          <img src="images/guinguette-1.png" alt="Vue principale du projet Guinguette">
+        </div>
 
-  <!-- IMAGE PRINCIPALE -->
-  <div class="hero-img">
-    <img src="images/guinguette-1.png">
-  </div>
+        <!-- 4 IMAGES -->
+        <div class="grid-4">
+          <div>
+            <img src="images/guinguette-2.png" alt="Vue du projet Guinguette avec circulation et usagers" loading="lazy">
+          </div>
+          <div>
+            <img src="images/guinguette-3.png" alt="Vue d'ensemble des modules de la Guinguette dans le paysage" loading="lazy">
+          </div>
+          <div>
+            <img src="images/guinguette-4.png" alt="Vue rapprochée des assises et tables du projet Guinguette" loading="lazy">
+          </div>
+          <div>
+            <img src="images/guinguette-5.png" alt="Vue du projet Guinguette avec variation de lumière" loading="lazy">
+          </div>
+        </div>
 
-  <!-- 4 IMAGES -->
-  <div class="grid-4">
-    <img src="images/guinguette-2.png">
-    <img src="images/guinguette-3.png">
-    <img src="images/guinguette-4.png">
-    <img src="images/guinguette-5.png">
-  </div>
+        <!-- 2 IMAGES HORIZONTALES -->
+        <div class="rectangles">
+          <div>
+            <img src="images/guinguette-6.png" alt="Plan et dessin technique du projet Guinguette" loading="lazy">
+          </div>
+          <div>
+            <img src="images/guinguette-7.png" alt="Élévation ou vue d'ensemble du projet Guinguette" loading="lazy">
+          </div>
+        </div>
 
-  <!-- RECTANGLES -->
-  <div class="rectangles">
-    <img src="images/guinguette-6.png">
-    <img src="images/guinguette-7.png">
-  </div>
+      </div>
+    </div>
+  </section>
 
-</div>
-
-</div>
-</section>
-
-<footer>
-  Portfolio d’Allan Zossi
-</footer>
+  <footer>
+    Portfolio d’Allan Zossi
+  </footer>
 
 </body>
 </html>
