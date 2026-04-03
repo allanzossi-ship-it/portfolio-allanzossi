@@ -76,11 +76,233 @@
       font-size:14px;
     }
 
+    .project-hero{
+      padding:70px 0 24px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .project-head{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:28px;
+      align-items:end;
+      margin-bottom:32px;
+    }
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.35em;
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:20px;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(42px,8vw,82px);
+      line-height:.98;
+      max-width:850px;
+    }
+
+    .project-copy{
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .project-copy p{
+      margin:0;
+    }
+
+    .back{
+      display:inline-block;
+      margin:20px 0 28px;
+      color:var(--muted);
+    }
+
+    /* HERO */
+    .hero-img{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#0c0c0c;
+      border-radius:24px;
+      border:1px solid var(--line);
+      padding:30px;
+      margin-top:32px;
+      margin-bottom:20px;
+    }
+
+    .hero-img img{
+      max-height:600px;
+      width:auto;
+      object-fit:contain;
+      border-radius:16px;
+    }
+
+    /* BLOC INTERACTIF */
+    .interactive-card{
+      background:#0c0c0c;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:20px;
+      margin-bottom:20px;
+    }
+
+    .interactive-viewer{
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .interactive-viewer img{
+      max-height:520px;
+      width:auto;
+      margin:auto;
+      object-fit:contain;
+      border-radius:16px;
+    }
+
+    .interactive-caption{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-top:14px;
+      color:var(--muted);
+      font-size:14px;
+      flex-wrap:wrap;
+    }
+
+    .interactive-badge{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      white-space:nowrap;
+    }
+
+    .hint{
+      color:rgba(244,239,232,.52);
+      font-size:13px;
+    }
+
     footer{
       padding:28px 0 50px;
       color:rgba(255,255,255,.48);
       font-size:14px;
     }
 
-    .project-hero{
-      padding:70px 
+    @media (max-width:900px){
+      .project-head{
+        grid-template-columns:1fr;
+      }
+
+      .menu{
+        display:none;
+      }
+
+      .hero-img{
+        padding:20px;
+      }
+
+      .hero-img img{
+        max-height:380px;
+      }
+
+      .interactive-card{
+        padding:16px;
+      }
+
+      .interactive-viewer img{
+        max-height:320px;
+      }
+
+      .project-hero{
+        padding-top:56px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <small>Portfolio</small>
+        <strong>ALLAN ZOSSI</strong>
+      </div>
+
+      <nav class="menu">
+        <a href="index.html">Accueil</a>
+        <a href="index.html#projets">Projets</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="project-hero">
+    <div class="container">
+      <a class="back" href="index.html">← Retour au portfolio</a>
+
+      <div class="project-head">
+        <div>
+          <div class="eyebrow">04 · Micro-architecture</div>
+          <h1>Cabane de surveillance en mer</h1>
+        </div>
+
+        <div class="project-copy">
+          <p>
+            Pensée comme un kit démontable, cette cabane légère s’assemble sans outils,
+            vis ni colle. Son système d’encoches permet une construction simple,
+            transportable et accessible, adaptée à un contexte isolé en bord de mer.
+          </p>
+        </div>
+      </div>
+
+      <!-- HERO HAUT -->
+      <div class="hero-img">
+        <img src="images/cabane-1.png" alt="Image principale de la cabane de surveillance en mer">
+      </div>
+
+      <!-- BLOC INTERACTIF -->
+      <div class="interactive-card">
+        <div class="interactive-viewer" id="cabaneViewer">
+          <img id="cabaneViewerImg" src="images/cabane-2.png" alt="Séquence d'images du projet Cabane de surveillance en mer">
+        </div>
+
+        <div class="interactive-caption">
+          <span class="interactive-badge" id="cabaneViewerLabel">Image 2 / 4</span>
+          <span class="hint">Clique sur l’image pour voir la suivante</span>
+        </div>
+      </div>
+
+      <!-- HERO BAS -->
+      <div class="hero-img">
+        <img src="images/cabane-5.png" alt="Image finale de la cabane de surveillance en mer">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">Portfolio d’Allan Zossi</div>
+  </footer>
+
+  <script>
+    const cabaneImages = [
+      "images/cabane-2.png",
+      "images/cabane-3.png",
+      "images/cabane-4.png"
+    ];
+
+    let cabaneIndex = 0;
+
+    const cabaneViewer = document.getElementById("cabaneViewer");
+    const cabaneViewerImg = document.getElementById("cabaneViewerImg");
+    const cabaneViewerLabel = document.getElementById("cabaneViewerLabel");
+
+    cabaneViewer.addEventListener("click", () => {
+      cabaneIndex = (cabaneIndex + 1) % cabaneImages.length;
+      cabaneViewerImg.src = cabaneImages[cabaneIndex];
+      cabaneViewerLabel.textContent = `Image ${2 + cabaneIndex} / 4`;
+    });
+  </script>
+</body>
+</html>
