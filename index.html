@@ -56,7 +56,7 @@
       bottom:0;
       width:100%;
       height:1px;
-      background:linear-gradient(90deg,transparent,rgba(231,221,207,.5),transparent);
+      background:linear-gradient(90deg,transparent,rgba(231,221,207,.55),transparent);
       opacity:.8;
     }
 
@@ -116,33 +116,41 @@
     /* HERO */
     .hero{
       position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
       padding:110px 0 86px;
       border-bottom:1px solid var(--line);
       overflow:hidden;
+      isolation:isolate;
     }
 
     .hero::before{
       content:"";
       position:absolute;
-      width:560px;
-      height:560px;
+      width:700px;
+      height:700px;
       border-radius:50%;
-      top:-180px;
-      right:-120px;
-      background:radial-gradient(circle, rgba(231,221,207,.09) 0%, rgba(231,221,207,0) 72%);
+      top:-220px;
+      right:-160px;
+      background:radial-gradient(circle, rgba(231,221,207,.10) 0%, rgba(231,221,207,0) 72%);
+      animation:floatGlow 10s ease-in-out infinite;
       pointer-events:none;
+      z-index:-1;
     }
 
     .hero::after{
       content:"";
       position:absolute;
-      width:420px;
-      height:420px;
+      width:520px;
+      height:520px;
       border-radius:50%;
-      bottom:-180px;
-      left:-80px;
-      background:radial-gradient(circle, rgba(255,255,255,.04) 0%, rgba(255,255,255,0) 72%);
+      bottom:-220px;
+      left:-120px;
+      background:radial-gradient(circle, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 72%);
+      animation:floatGlow 12s ease-in-out infinite reverse;
       pointer-events:none;
+      z-index:-1;
     }
 
     .hero-grid{
@@ -223,6 +231,10 @@
       font-weight:600;
     }
 
+    .btn.primary:hover{
+      box-shadow:0 12px 32px rgba(231,221,207,.14);
+    }
+
     .hero-visual{
       position:relative;
       background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
@@ -231,6 +243,18 @@
       padding:16px;
       box-shadow:var(--shadow);
       overflow:hidden;
+      transform:translateY(0);
+      animation:heroFloat 7s ease-in-out infinite;
+    }
+
+    .hero-visual::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg,transparent 0%, rgba(255,255,255,.06) 45%, transparent 70%);
+      transform:translateX(-120%);
+      animation:shine 7s ease-in-out infinite;
+      pointer-events:none;
     }
 
     .hero-visual img{
@@ -544,6 +568,21 @@
     .delay-7{transition-delay:.56s}
     .delay-8{transition-delay:.64s}
 
+    @keyframes floatGlow{
+      0%,100%{transform:translateY(0) translateX(0)}
+      50%{transform:translateY(18px) translateX(-10px)}
+    }
+
+    @keyframes heroFloat{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
+    }
+
+    @keyframes shine{
+      0%,100%{transform:translateX(-120%)}
+      45%,55%{transform:translateX(120%)}
+    }
+
     @media (prefers-reduced-motion: reduce){
       *{
         animation:none !important;
@@ -579,6 +618,7 @@
       }
 
       .hero{
+        min-height:auto;
         padding-top:78px;
       }
 
@@ -643,10 +683,10 @@
       </div>
 
       <div class="hero-visual reveal-right visible">
-        <img src="images/guinguette-1.png" alt="Projet Guinguette">
+        <img src="images/epi-1.png" alt="Episaveurs – Aménagement extérieur">
         <div class="hero-note">
           <strong>Projet mis en avant</strong>
-          <span>Guinguette — structure modulaire, perception du relief et variation spatiale.</span>
+          <span>Episaveurs — une seconde peau en polycarbonate pour créer un espace de pause protégé et lumineux.</span>
         </div>
       </div>
     </div>
@@ -680,27 +720,26 @@
       <div class="eyebrow reveal">Projet phare</div>
 
       <div class="featured">
-        <a href="guinguette.html" class="featured-visual reveal-left">
-          <img src="images/guinguette-1.png" alt="Guinguette">
+        <a href="episaveurs.html" class="featured-visual reveal-left">
+          <img src="images/epi-1.png" alt="Episaveurs – Aménagement extérieur">
         </a>
 
         <div class="featured-copy reveal-right">
           <div>
-            <div class="num">05</div>
-            <h2>Guinguette</h2>
+            <div class="num">08</div>
+            <h2>Episaveurs – Aménagement extérieur</h2>
             <p>
-              Une guinguette modulaire implantée sur un terrain en pente, où la répétition
-              des structures et la hauteur constante des piliers créent un jeu de perception
-              entre uniformité, dénivelé et variation spatiale.
+              Un espace de pause destiné aux employés, structuré par une seconde peau en polycarbonate.
+              Cette structure accompagne le bâtiment, filtre les vues et laisse passer la lumière.
             </p>
             <p>
-              Ce projet résume bien mon approche : une attention à la matière, à la lecture
-              de l’espace, aux usages et à la narration.
+              Le projet crée un lieu protégé, sobre et fonctionnel, où les assises et le végétal
+              participent à une ambiance calme et cohérente avec son contexte.
             </p>
           </div>
 
           <div class="actions" style="margin-top:22px;">
-            <a class="btn primary" href="guinguette.html">Découvrir le projet</a>
+            <a class="btn primary" href="episaveurs.html">Découvrir le projet</a>
           </div>
         </div>
       </div>
@@ -722,121 +761,6 @@
 
       <div class="projects-grid">
         <article class="card large reveal delay-1">
-          <a href="retail-chocolat.html" class="card-media">
-            <img src="images/retail-1.png" alt="Retail – Le Chocolat des Français">
-          </a>
-          <div class="card-body">
-            <div>
-              <div class="meta">
-                <div><div class="num">07</div><h3>Retail – Le Chocolat des Français</h3></div>
-                <div class="tag">Design retail</div>
-              </div>
-              <p>
-                Un espace de vente pensé comme un parcours immersif, mettant en scène
-                l’origine, la fabrication et le produit pour transformer l’achat en expérience.
-              </p>
-            </div>
-            <p style="margin-top:18px;"><a class="btn" href="retail-chocolat.html">Voir le projet</a></p>
-          </div>
-        </article>
-
-        <article class="card reveal delay-2">
-          <a href="corps-espace.html" class="card-media">
-            <img src="images/corps-1.png" alt="Le corps et l’espace">
-          </a>
-          <div class="card-body">
-            <div class="meta">
-              <div><div class="num">01</div><h3>Le corps et l’espace</h3></div>
-              <div class="tag">Recherche plastique</div>
-            </div>
-            <p>
-              Des moulages de mains en béton deviennent des formes architecturales.
-            </p>
-            <p style="margin-top:16px;"><a class="btn" href="corps-espace.html">Voir le projet</a></p>
-          </div>
-        </article>
-
-        <article class="card reveal delay-3">
-          <a href="reveur-foret.html" class="card-media">
-            <img src="images/reveur-4.png" alt="Le rêveur de la forêt">
-          </a>
-          <div class="card-body">
-            <div class="meta">
-              <div><div class="num">02</div><h3>Le rêveur de la forêt</h3></div>
-              <div class="tag">Installation conceptuelle</div>
-            </div>
-            <p>
-              Une quête intérieure entre mémoire, rêve, matière brûlée et imaginaire.
-            </p>
-            <p style="margin-top:16px;"><a class="btn" href="reveur-foret.html">Voir le projet</a></p>
-          </div>
-        </article>
-
-        <article class="card reveal delay-4">
-          <a href="meuble-separation.html" class="card-media">
-            <img src="images/meuble-1.png" alt="Meuble de séparation">
-          </a>
-          <div class="card-body">
-            <div class="meta">
-              <div><div class="num">03</div><h3>Meuble de séparation</h3></div>
-              <div class="tag">Design de mobilier</div>
-            </div>
-            <p>
-              Un meuble multifonction qui structure l’espace et les usages du quotidien.
-            </p>
-            <p style="margin-top:16px;"><a class="btn" href="meuble-separation.html">Voir le projet</a></p>
-          </div>
-        </article>
-
-        <article class="card reveal delay-5">
-          <a href="cabane-mer.html" class="card-media">
-            <img src="images/cabane-1.png" alt="Cabane de surveillance en mer">
-          </a>
-          <div class="card-body">
-            <div class="meta">
-              <div><div class="num">04</div><h3>Cabane de surveillance en mer</h3></div>
-              <div class="tag">Micro-architecture</div>
-            </div>
-            <p>
-              Une micro-architecture démontable pensée comme un kit simple et transportable.
-            </p>
-            <p style="margin-top:16px;"><a class="btn" href="cabane-mer.html">Voir le projet</a></p>
-          </div>
-        </article>
-
-        <article class="card reveal delay-6">
-          <a href="guinguette.html" class="card-media">
-            <img src="images/guinguette-1.png" alt="Guinguette">
-          </a>
-          <div class="card-body">
-            <div class="meta">
-              <div><div class="num">05</div><h3>Guinguette</h3></div>
-              <div class="tag">Aménagement extérieur</div>
-            </div>
-            <p>
-              Une structure répétitive qui joue avec la pente, la perception et le paysage.
-            </p>
-            <p style="margin-top:16px;"><a class="btn" href="guinguette.html">Voir le projet</a></p>
-          </div>
-        </article>
-
-        <article class="card reveal delay-7">
-          <a href="projet-stage.html" class="card-media">
-            <img src="images/stage-1.png" alt="Projet de stage">
-          </a>
-          <div class="card-body">
-            <div class="meta">
-              <div><div class="num">06</div><h3>Projet de stage</h3></div>
-              <div class="tag">Aménagement intérieur</div>
-            </div>
-            <p>
-              Réorganisation des combles autour d’un volume principal et d’un meuble structurant.
-            </p>
-            <p style="margin-top:16px;"><a class="btn" href="projet-stage.html">Voir le projet</a></p>
-          </div>
-        </article>
-
-        <article class="card large reveal delay-8">
           <a href="episaveurs.html" class="card-media">
             <img src="images/epi-1.png" alt="Episaveurs – Aménagement extérieur">
           </a>
@@ -852,6 +776,109 @@
               </p>
             </div>
             <p style="margin-top:18px;"><a class="btn" href="episaveurs.html">Voir le projet</a></p>
+          </div>
+        </article>
+
+        <article class="card reveal delay-2">
+          <a href="corps-espace.html" class="card-media">
+            <img src="images/corps-1.png" alt="Le corps et l’espace">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">01</div><h3>Le corps et l’espace</h3></div>
+              <div class="tag">Recherche plastique</div>
+            </div>
+            <p>Des moulages de mains en béton deviennent des formes architecturales.</p>
+            <p style="margin-top:16px;"><a class="btn" href="corps-espace.html">Voir le projet</a></p>
+          </div>
+        </article>
+
+        <article class="card reveal delay-3">
+          <a href="reveur-foret.html" class="card-media">
+            <img src="images/reveur-4.png" alt="Le rêveur de la forêt">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">02</div><h3>Le rêveur de la forêt</h3></div>
+              <div class="tag">Installation conceptuelle</div>
+            </div>
+            <p>Une quête intérieure entre mémoire, rêve, matière brûlée et imaginaire.</p>
+            <p style="margin-top:16px;"><a class="btn" href="reveur-foret.html">Voir le projet</a></p>
+          </div>
+        </article>
+
+        <article class="card reveal delay-4">
+          <a href="meuble-separation.html" class="card-media">
+            <img src="images/meuble-1.png" alt="Meuble de séparation">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">03</div><h3>Meuble de séparation</h3></div>
+              <div class="tag">Design de mobilier</div>
+            </div>
+            <p>Un meuble multifonction qui structure l’espace et les usages du quotidien.</p>
+            <p style="margin-top:16px;"><a class="btn" href="meuble-separation.html">Voir le projet</a></p>
+          </div>
+        </article>
+
+        <article class="card reveal delay-5">
+          <a href="cabane-mer.html" class="card-media">
+            <img src="images/cabane-1.png" alt="Cabane de surveillance en mer">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">04</div><h3>Cabane de surveillance en mer</h3></div>
+              <div class="tag">Micro-architecture</div>
+            </div>
+            <p>Une micro-architecture démontable pensée comme un kit simple et transportable.</p>
+            <p style="margin-top:16px;"><a class="btn" href="cabane-mer.html">Voir le projet</a></p>
+          </div>
+        </article>
+
+        <article class="card reveal delay-6">
+          <a href="guinguette.html" class="card-media">
+            <img src="images/guinguette-1.png" alt="Guinguette">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">05</div><h3>Guinguette</h3></div>
+              <div class="tag">Aménagement extérieur</div>
+            </div>
+            <p>Une structure répétitive qui joue avec la pente, la perception et le paysage.</p>
+            <p style="margin-top:16px;"><a class="btn" href="guinguette.html">Voir le projet</a></p>
+          </div>
+        </article>
+
+        <article class="card reveal delay-7">
+          <a href="projet-stage.html" class="card-media">
+            <img src="images/stage-1.png" alt="Projet de stage">
+          </a>
+          <div class="card-body">
+            <div class="meta">
+              <div><div class="num">06</div><h3>Projet de stage</h3></div>
+              <div class="tag">Aménagement intérieur</div>
+            </div>
+            <p>Réorganisation des combles autour d’un volume principal et d’un meuble structurant.</p>
+            <p style="margin-top:16px;"><a class="btn" href="projet-stage.html">Voir le projet</a></p>
+          </div>
+        </article>
+
+        <article class="card large reveal delay-8">
+          <a href="retail-chocolat.html" class="card-media">
+            <img src="images/retail-1.png" alt="Retail – Le Chocolat des Français">
+          </a>
+          <div class="card-body">
+            <div>
+              <div class="meta">
+                <div><div class="num">07</div><h3>Retail – Le Chocolat des Français</h3></div>
+                <div class="tag">Design retail</div>
+              </div>
+              <p>
+                Un espace de vente pensé comme un parcours immersif, mettant en scène
+                l’origine, la fabrication et le produit pour transformer l’achat en expérience.
+              </p>
+            </div>
+            <p style="margin-top:18px;"><a class="btn" href="retail-chocolat.html">Voir le projet</a></p>
           </div>
         </article>
       </div>
@@ -881,9 +908,7 @@
       <div class="contact reveal">
         <div class="eyebrow">Contact</div>
         <h2>Disponible pour stages, collaborations et projets en architecture intérieure.</h2>
-        <p>
-          N’hésitez pas à me contacter pour toute opportunité ou collaboration.
-        </p>
+        <p>N’hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
 
         <div class="contact-row">
           <div class="pill">allanzossi57@gmail.com</div>
