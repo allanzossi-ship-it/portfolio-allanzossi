@@ -1,77 +1,549 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Allan Zossi — Portfolio</title><style>
-:root{
-  --bg:#111111; --panel:#181818; --text:#f4efe8; --muted:rgba(244,239,232,.72);
-  --line:rgba(255,255,255,.09); --accent:#e7ddcf;
-}
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
-.container{width:min(1180px,calc(100% - 40px));margin:0 auto}
-.nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:rgba(17,17,17,.86);border-bottom:1px solid var(--line)}
-.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-.brand small{display:block;text-transform:uppercase;letter-spacing:.3em;color:var(--muted);font-size:11px}
-.brand strong{letter-spacing:.16em;font-size:18px}
-.menu{display:flex;gap:22px;color:var(--muted);font-size:14px}
-.hero{padding:96px 0 72px;border-bottom:1px solid var(--line)}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px}
-.eyebrow{text-transform:uppercase;letter-spacing:.35em;color:var(--muted);font-size:12px;margin-bottom:20px}
-h1{margin:0 0 22px;font-size:clamp(42px,8vw,82px);line-height:.98;max-width:850px}
-h2{margin:0 0 14px;font-size:28px}
-.lead{max-width:760px;color:var(--muted);font-size:18px}
-.actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
-.btn{border:1px solid var(--line);padding:13px 20px;border-radius:18px;display:inline-block}
-.btn.primary{background:var(--accent);color:#111;border-color:transparent;font-weight:600}
-.side-card,.contact{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:30px;padding:28px}
-.side-card ul{margin:0;padding-left:18px;color:var(--muted)}
-.section{padding:74px 0;border-bottom:1px solid var(--line)}
-.about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:36px}
-.about-text{color:var(--muted);font-size:17px}
-.projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:28px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:30px;overflow:hidden}
-.card img{width:100%;height:320px;object-fit:cover;background:#222}
-.card-body{padding:24px}
-.meta{display:flex;justify-content:space-between;gap:14px;align-items:start}
-.num{color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.25em;font-size:12px}
-.tag{border:1px solid var(--line);color:var(--muted);border-radius:999px;font-size:12px;padding:6px 10px;white-space:nowrap}
-.card h3,.project-head h1{margin:10px 0 0;font-size:28px;line-height:1.1}
-.card p,.project-copy,.contact p{color:var(--muted)}
-.skills,.contact-row{display:flex;flex-wrap:wrap;gap:12px}
-.skill,.pill{border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--muted)}
-footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
-.project-hero{padding:70px 0 24px;border-bottom:1px solid var(--line)}
-.project-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:end}
-.project-gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
-.project-gallery img{width:100%;border-radius:24px;border:1px solid var(--line);background:#222}
-.back{display:inline-block;margin:20px 0 0;color:var(--muted)}
-@media (max-width:900px){
-  .hero-grid,.about-grid,.projects-grid,.project-head,.project-gallery{grid-template-columns:1fr}
-  .menu{display:none}.card img{height:250px}.hero{padding-top:72px}
-}
-</style></head>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allan Zossi — Portfolio</title>
+
+  <style>
+    :root{
+      --bg:#111111;
+      --panel:#181818;
+      --text:#f4efe8;
+      --muted:rgba(244,239,232,.72);
+      --line:rgba(255,255,255,.09);
+      --accent:#e7ddcf;
+      --shadow:0 20px 50px rgba(0,0,0,.28);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Inter,Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    .container{
+      width:min(1180px,calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:100;
+      backdrop-filter:blur(14px);
+      background:rgba(17,17,17,.78);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:100%;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(231,221,207,.55),transparent);
+      opacity:.7;
+    }
+
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .brand{
+      animation:fadeUp .9s ease both;
+    }
+
+    .brand small{
+      display:block;
+      text-transform:uppercase;
+      letter-spacing:.3em;
+      color:var(--muted);
+      font-size:11px;
+    }
+
+    .brand strong{
+      letter-spacing:.16em;
+      font-size:18px;
+    }
+
+    .menu{
+      display:flex;
+      gap:22px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .menu a{
+      position:relative;
+      transition:color .25s ease;
+    }
+
+    .menu a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:100%;
+      height:1px;
+      background:var(--accent);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform .28s ease;
+    }
+
+    .menu a:hover{
+      color:var(--text);
+    }
+
+    .menu a:hover::after{
+      transform:scaleX(1);
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      padding:96px 0 72px;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      top:-160px;
+      right:-120px;
+      background:radial-gradient(circle, rgba(231,221,207,.08) 0%, rgba(231,221,207,0) 70%);
+      pointer-events:none;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      bottom:-180px;
+      left:-80px;
+      background:radial-gradient(circle, rgba(255,255,255,.04) 0%, rgba(255,255,255,0) 72%);
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:36px;
+      align-items:start;
+      position:relative;
+      z-index:1;
+    }
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.35em;
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:20px;
+    }
+
+    h1{
+      margin:0 0 22px;
+      font-size:clamp(42px,8vw,82px);
+      line-height:.98;
+      max-width:850px;
+    }
+
+    h2{
+      margin:0 0 14px;
+      font-size:28px;
+    }
+
+    .lead{
+      max-width:760px;
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .actions{
+      display:flex;
+      gap:14px;
+      margin-top:30px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border:1px solid var(--line);
+      padding:13px 20px;
+      border-radius:18px;
+      display:inline-block;
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        color .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,255,255,.2);
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
+    }
+
+    .btn.primary{
+      background:var(--accent);
+      color:#111;
+      border-color:transparent;
+      font-weight:600;
+    }
+
+    .btn.primary:hover{
+      box-shadow:0 12px 32px rgba(231,221,207,.14);
+    }
+
+    .side-card,
+    .contact{
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .side-card{
+      transition:transform .35s ease,border-color .35s ease;
+    }
+
+    .side-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(255,255,255,.16);
+    }
+
+    .side-card ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    .section{
+      padding:74px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:.75fr 1.25fr;
+      gap:36px;
+    }
+
+    .about-text{
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:24px;
+      margin-top:28px;
+    }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:30px;
+      overflow:hidden;
+      transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+      will-change:transform;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(255,255,255,.18);
+      box-shadow:0 24px 55px rgba(0,0,0,.28);
+    }
+
+    .card a:first-child{
+      overflow:hidden;
+      display:block;
+    }
+
+    .card img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      background:#222;
+      transition:transform .7s ease, filter .5s ease;
+    }
+
+    .card:hover img{
+      transform:scale(1.035);
+      filter:brightness(1.04);
+    }
+
+    .card-body{
+      padding:24px;
+    }
+
+    .meta{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:start;
+    }
+
+    .num{
+      color:rgba(255,255,255,.38);
+      text-transform:uppercase;
+      letter-spacing:.25em;
+      font-size:12px;
+    }
+
+    .tag{
+      border:1px solid var(--line);
+      color:var(--muted);
+      border-radius:999px;
+      font-size:12px;
+      padding:6px 10px;
+      white-space:nowrap;
+      transition:border-color .25s ease,color .25s ease;
+    }
+
+    .card:hover .tag{
+      border-color:rgba(255,255,255,.18);
+      color:var(--text);
+    }
+
+    .card h3,.project-head h1{
+      margin:10px 0 0;
+      font-size:28px;
+      line-height:1.1;
+    }
+
+    .card p,.project-copy,.contact p{
+      color:var(--muted);
+    }
+
+    .skills,.contact-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .skill,.pill{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:10px 14px;
+      color:var(--muted);
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        color .25s ease,
+        background .25s ease;
+    }
+
+    .skill:hover,.pill:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,255,255,.18);
+      color:var(--text);
+      background:rgba(255,255,255,.02);
+    }
+
+    footer{
+      padding:28px 0 50px;
+      color:rgba(255,255,255,.48);
+      font-size:14px;
+    }
+
+    /* REVEAL ANIMATIONS */
+    .reveal{
+      opacity:0;
+      transform:translateY(34px);
+      transition:
+        opacity .85s cubic-bezier(.2,.7,.2,1),
+        transform .85s cubic-bezier(.2,.7,.2,1);
+      will-change:opacity,transform;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .reveal-left{
+      opacity:0;
+      transform:translateX(-34px);
+      transition:
+        opacity .85s cubic-bezier(.2,.7,.2,1),
+        transform .85s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .reveal-left.visible{
+      opacity:1;
+      transform:translateX(0);
+    }
+
+    .reveal-right{
+      opacity:0;
+      transform:translateX(34px);
+      transition:
+        opacity .85s cubic-bezier(.2,.7,.2,1),
+        transform .85s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .reveal-right.visible{
+      opacity:1;
+      transform:translateX(0);
+    }
+
+    .delay-1{transition-delay:.08s}
+    .delay-2{transition-delay:.16s}
+    .delay-3{transition-delay:.24s}
+    .delay-4{transition-delay:.32s}
+    .delay-5{transition-delay:.40s}
+    .delay-6{transition-delay:.48s}
+    .delay-7{transition-delay:.56s}
+    .delay-8{transition-delay:.64s}
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(16px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+      }
+
+      .reveal,.reveal-left,.reveal-right{
+        opacity:1 !important;
+        transform:none !important;
+      }
+    }
+
+    @media (max-width:900px){
+      .hero-grid,.about-grid,.projects-grid{
+        grid-template-columns:1fr;
+      }
+
+      .menu{
+        display:none;
+      }
+
+      .card img{
+        height:250px;
+      }
+
+      .hero{
+        padding-top:72px;
+      }
+    }
+  </style>
+</head>
 <body>
-<header class="nav"><div class="container nav-inner"><div class="brand"><small>Portfolio</small><strong>ALLAN ZOSSI</strong></div>
-<nav class="menu"><a href="#apropos">À propos</a><a href="#projets">Projets</a><a href="#competences">Compétences</a><a href="#contact">Contact</a></nav></div></header>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <small>Portfolio</small>
+        <strong>ALLAN ZOSSI</strong>
+      </div>
 
-<section class="hero"><div class="container hero-grid">
-<div><div class="eyebrow">Architecture d’intérieur</div><h1>Des espaces sensibles, narratifs et pensés autour de la matière.</h1>
-<p class="lead">Je développe une approche de l’espace à la croisée de l’architecture intérieure, du mobilier et de la recherche plastique. Mon travail explore les liens entre matière, usage et perception, à travers des projets sensibles, fonctionnels et narratifs.</p>
-<div class="actions"><a class="btn primary" href="#projets">Voir les projets</a><a class="btn" href="#contact">Me contacter</a></div></div>
-<div class="side-card"><div class="eyebrow" style="margin-bottom:14px;">Approche</div><h2>Une pratique entre émotion, fonction et expérimentation.</h2>
-<ul><li>Dialogue entre organique et architectural</li><li>Attention portée aux usages et aux circulations</li><li>Importance de la narration spatiale</li><li>Goût pour les matériaux bruts et les formes sobres</li></ul></div>
-</div></section>
+      <nav class="menu">
+        <a href="#apropos">À propos</a>
+        <a href="#projets">Projets</a>
+        <a href="#competences">Compétences</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="section" id="apropos"><div class="container about-grid">
-<div><div class="eyebrow">À propos</div><h2>Une pratique entre émotion, fonction et expérimentation.</h2></div>
-<div class="about-text"><p>Je m’intéresse à la manière dont les formes, les matériaux et les circulations influencent notre perception de l’espace. Mon portfolio rassemble des projets d’architecture intérieure, de micro-architecture, de mobilier et d’aménagement, où l’expérimentation formelle dialogue avec des usages concrets.</p>
-<p>Qu’il s’agisse d’une installation conceptuelle, d’un espace de vente, d’un mobilier multifonction ou d’un lieu de pause, je cherche toujours à proposer des espaces lisibles, sensibles et cohérents avec leur contexte.</p></div>
-</div></section>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal-left visible">
+        <div class="eyebrow">Architecture d’intérieur</div>
+        <h1>Des espaces sensibles, narratifs et pensés autour de la matière.</h1>
+        <p class="lead">
+          Je développe une approche de l’espace à la croisée de l’architecture intérieure,
+          du mobilier et de la recherche plastique. Mon travail explore les liens entre
+          matière, usage et perception, à travers des projets sensibles, fonctionnels et narratifs.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#projets">Voir les projets</a>
+          <a class="btn" href="#contact">Me contacter</a>
+        </div>
+      </div>
 
-<section class="section" id="projets"><div class="container">
-<div class="eyebrow">Sélection</div><h2>Projets</h2><div class="projects-grid">
-        <article class="card">
+      <div class="side-card reveal-right visible">
+        <div class="eyebrow" style="margin-bottom:14px;">Approche</div>
+        <h2>Une pratique entre émotion, fonction et expérimentation.</h2>
+        <ul>
+          <li>Dialogue entre organique et architectural</li>
+          <li>Attention portée aux usages et aux circulations</li>
+          <li>Importance de la narration spatiale</li>
+          <li>Goût pour les matériaux bruts et les formes sobres</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apropos">
+    <div class="container about-grid">
+      <div class="reveal-left">
+        <div class="eyebrow">À propos</div>
+        <h2>Une pratique entre émotion, fonction et expérimentation.</h2>
+      </div>
+
+      <div class="about-text reveal-right">
+        <p>
+          Je m’intéresse à la manière dont les formes, les matériaux et les circulations
+          influencent notre perception de l’espace. Mon portfolio rassemble des projets
+          d’architecture intérieure, de micro-architecture, de mobilier et d’aménagement,
+          où l’expérimentation formelle dialogue avec des usages concrets.
+        </p>
+        <p>
+          Qu’il s’agisse d’une installation conceptuelle, d’un espace de vente, d’un
+          mobilier multifonction ou d’un lieu de pause, je cherche toujours à proposer
+          des espaces lisibles, sensibles et cohérents avec leur contexte.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projets">
+    <div class="container">
+      <div class="eyebrow reveal">Sélection</div>
+      <h2 class="reveal">Projets</h2>
+
+      <div class="projects-grid">
+        <article class="card reveal delay-1">
           <a href="corps-espace.html">
             <img src="images/corps-1.png" alt="Le corps et l’espace">
           </a>
@@ -84,8 +556,8 @@ footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
             <p style="margin-top:16px;"><a class="btn" href="corps-espace.html">Voir le projet</a></p>
           </div>
         </article>
-        
-        <article class="card">
+
+        <article class="card reveal delay-2">
           <a href="reveur-foret.html">
             <img src="images/reveur-1.png" alt="Le rêveur de la forêt">
           </a>
@@ -98,8 +570,8 @@ footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
             <p style="margin-top:16px;"><a class="btn" href="reveur-foret.html">Voir le projet</a></p>
           </div>
         </article>
-        
-        <article class="card">
+
+        <article class="card reveal delay-3">
           <a href="meuble-separation.html">
             <img src="images/meuble-1.png" alt="Meuble de séparation">
           </a>
@@ -112,8 +584,8 @@ footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
             <p style="margin-top:16px;"><a class="btn" href="meuble-separation.html">Voir le projet</a></p>
           </div>
         </article>
-        
-        <article class="card">
+
+        <article class="card reveal delay-4">
           <a href="cabane-mer.html">
             <img src="images/cabane-1.png" alt="Cabane de surveillance en mer">
           </a>
@@ -126,8 +598,8 @@ footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
             <p style="margin-top:16px;"><a class="btn" href="cabane-mer.html">Voir le projet</a></p>
           </div>
         </article>
-        
-        <article class="card">
+
+        <article class="card reveal delay-5">
           <a href="guinguette.html">
             <img src="images/guinguette-1.png" alt="Guinguette">
           </a>
@@ -140,8 +612,8 @@ footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
             <p style="margin-top:16px;"><a class="btn" href="guinguette.html">Voir le projet</a></p>
           </div>
         </article>
-        
-        <article class="card">
+
+        <article class="card reveal delay-6">
           <a href="projet-stage.html">
             <img src="images/stage-1.png" alt="Projet de stage">
           </a>
@@ -154,8 +626,8 @@ footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
             <p style="margin-top:16px;"><a class="btn" href="projet-stage.html">Voir le projet</a></p>
           </div>
         </article>
-        
-        <article class="card">
+
+        <article class="card reveal delay-7">
           <a href="retail-chocolat.html">
             <img src="images/retail-1.png" alt="Retail – Le Chocolat des Français">
           </a>
@@ -168,8 +640,8 @@ footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
             <p style="margin-top:16px;"><a class="btn" href="retail-chocolat.html">Voir le projet</a></p>
           </div>
         </article>
-        
-        <article class="card">
+
+        <article class="card reveal delay-8">
           <a href="episaveurs.html">
             <img src="images/epi-1.png" alt="Episaveurs – Aménagement extérieur">
           </a>
@@ -182,18 +654,62 @@ footer{padding:28px 0 50px;color:rgba(255,255,255,.48);font-size:14px}
             <p style="margin-top:16px;"><a class="btn" href="episaveurs.html">Voir le projet</a></p>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="competences">
+    <div class="container">
+      <div class="eyebrow reveal">Compétences</div>
+      <h2 class="reveal">Savoir-faire</h2>
+      <div class="skills">
+        <div class="skill reveal delay-1">Architecture intérieure</div>
+        <div class="skill reveal delay-2">Aménagement d’espace</div>
+        <div class="skill reveal delay-3">Design de mobilier</div>
+        <div class="skill reveal delay-4">Micro-architecture</div>
+        <div class="skill reveal delay-5">Design retail</div>
+        <div class="skill reveal delay-6">Modélisation 3D</div>
+        <div class="skill reveal delay-7">Recherche conceptuelle</div>
+        <div class="skill reveal delay-8">Rendu visuel</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact reveal">
+        <div class="eyebrow">Contact</div>
+        <h2>Disponible pour stages, collaborations et projets en architecture intérieure.</h2>
+        <p>N’hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
+        <div class="contact-row">
+          <div class="pill">allanzossi57@gmail.com</div>
+          <div class="pill">Reims</div>
+          <div class="pill">Nancy</div>
+          <div class="pill">Metz</div>
         </div>
-</div></section>
+      </div>
+    </div>
+  </section>
 
-<section class="section" id="competences"><div class="container"><div class="eyebrow">Compétences</div><h2>Savoir-faire</h2>
-<div class="skills"><div class="skill">Architecture intérieure</div><div class="skill">Aménagement d’espace</div><div class="skill">Design de mobilier</div><div class="skill">Micro-architecture</div><div class="skill">Design retail</div><div class="skill">Modélisation 3D</div><div class="skill">Recherche conceptuelle</div><div class="skill">Rendu visuel</div></div>
-</div></section>
+  <footer>
+    <div class="container">Portfolio d’Allan Zossi</div>
+  </footer>
 
-<section class="section" id="contact"><div class="container"><div class="contact">
-<div class="eyebrow">Contact</div><h2>Disponible pour stages, collaborations et projets en architecture intérieure.</h2>
-<p>N’hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
-<div class="contact-row"><div class="pill">allanzossi57@gmail.com</div><div class="pill">Reims</div><div class="pill">Nancy</div><div class="pill">Metz</div></div>
-</div></div></section>
+  <script>
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 
-<footer><div class="container">Portfolio d’Allan Zossi</div></footer>
-</body></html>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
