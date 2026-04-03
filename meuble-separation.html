@@ -15,6 +15,7 @@
 }
 
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:Inter,Arial,Helvetica,sans-serif;
@@ -129,6 +130,12 @@ h1{
   border-radius:12px;
 }
 
+/* IMAGE LARGE */
+.full{
+  grid-column:1 / -1;
+}
+
+/* FOOTER */
 footer{
   padding:40px;
   text-align:center;
@@ -180,9 +187,9 @@ footer{
   </div>
 </div>
 
-<!-- HERO -->
+<!-- HERO HAUT -->
 <div class="hero-img">
-  <img src="images/meuble-1.png" alt="Vue principale du meuble">
+  <img src="images/meuble-1.png" alt="">
 </div>
 
 <!-- GRID -->
@@ -193,17 +200,19 @@ footer{
   </div>
 
   <div class="card">
-    <img src="images/meuble-3.png" alt="">
-  </div>
-
-  <div class="card">
     <img src="images/meuble-4.png" alt="">
   </div>
 
-  <div class="card">
-    <img src="images/meuble-5.png" alt="">
+  <!-- IMAGE LARGE -->
+  <div class="card full">
+    <img src="images/meuble-3.png" alt="">
   </div>
 
+</div>
+
+<!-- HERO BAS -->
+<div class="hero-img">
+  <img src="images/meuble-5.png" alt="">
 </div>
 
 </div>
