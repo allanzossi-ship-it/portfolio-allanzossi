@@ -9,11 +9,14 @@
     :root{
       --bg:#111111;
       --panel:#181818;
+      --panel-2:#151515;
       --text:#f4efe8;
       --muted:rgba(244,239,232,.72);
+      --soft:rgba(244,239,232,.48);
       --line:rgba(255,255,255,.09);
       --accent:#e7ddcf;
-      --shadow:0 20px 50px rgba(0,0,0,.28);
+      --shadow:0 24px 60px rgba(0,0,0,.28);
+      --radius:30px;
     }
 
     *{box-sizing:border-box}
@@ -53,8 +56,8 @@
       bottom:0;
       width:100%;
       height:1px;
-      background:linear-gradient(90deg,transparent,rgba(231,221,207,.55),transparent);
-      opacity:.7;
+      background:linear-gradient(90deg,transparent,rgba(231,221,207,.5),transparent);
+      opacity:.8;
     }
 
     .nav-inner{
@@ -62,10 +65,6 @@
       justify-content:space-between;
       align-items:center;
       padding:18px 0;
-    }
-
-    .brand{
-      animation:fadeUp .9s ease both;
     }
 
     .brand small{
@@ -117,7 +116,7 @@
     /* HERO */
     .hero{
       position:relative;
-      padding:96px 0 72px;
+      padding:110px 0 86px;
       border-bottom:1px solid var(--line);
       overflow:hidden;
     }
@@ -125,12 +124,12 @@
     .hero::before{
       content:"";
       position:absolute;
-      width:520px;
-      height:520px;
+      width:560px;
+      height:560px;
       border-radius:50%;
-      top:-160px;
+      top:-180px;
       right:-120px;
-      background:radial-gradient(circle, rgba(231,221,207,.08) 0%, rgba(231,221,207,0) 70%);
+      background:radial-gradient(circle, rgba(231,221,207,.09) 0%, rgba(231,221,207,0) 72%);
       pointer-events:none;
     }
 
@@ -148,9 +147,9 @@
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.2fr .8fr;
+      grid-template-columns:1.05fr .95fr;
       gap:36px;
-      align-items:start;
+      align-items:center;
       position:relative;
       z-index:1;
     }
@@ -165,18 +164,28 @@
 
     h1{
       margin:0 0 22px;
-      font-size:clamp(42px,8vw,82px);
-      line-height:.98;
-      max-width:850px;
+      font-size:clamp(42px,8vw,88px);
+      line-height:.96;
+      max-width:860px;
+      letter-spacing:-0.03em;
     }
 
     h2{
       margin:0 0 14px;
+      font-size:32px;
+      line-height:1.05;
+      letter-spacing:-0.02em;
+    }
+
+    h3{
+      margin:0;
       font-size:28px;
+      line-height:1.05;
+      letter-spacing:-0.02em;
     }
 
     .lead{
-      max-width:760px;
+      max-width:720px;
       color:var(--muted);
       font-size:18px;
     }
@@ -214,43 +223,64 @@
       font-weight:600;
     }
 
-    .btn.primary:hover{
-      box-shadow:0 12px 32px rgba(231,221,207,.14);
-    }
-
-    .side-card,
-    .contact{
+    .hero-visual{
+      position:relative;
       background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
       border:1px solid var(--line);
-      border-radius:30px;
-      padding:28px;
+      border-radius:32px;
+      padding:16px;
       box-shadow:var(--shadow);
+      overflow:hidden;
     }
 
-    .side-card{
-      transition:transform .35s ease,border-color .35s ease;
+    .hero-visual img{
+      width:100%;
+      height:640px;
+      object-fit:cover;
+      border-radius:24px;
+      transition:transform 1.2s ease;
     }
 
-    .side-card:hover{
-      transform:translateY(-4px);
-      border-color:rgba(255,255,255,.16);
+    .hero-visual:hover img{
+      transform:scale(1.03);
     }
 
-    .side-card ul{
-      margin:0;
-      padding-left:18px;
+    .hero-note{
+      position:absolute;
+      left:22px;
+      bottom:22px;
+      background:rgba(17,17,17,.74);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:18px;
+      padding:14px 16px;
+      max-width:280px;
+    }
+
+    .hero-note strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:14px;
+    }
+
+    .hero-note span{
+      display:block;
       color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
     }
 
+    /* SECTIONS */
     .section{
-      padding:74px 0;
+      padding:82px 0;
       border-bottom:1px solid var(--line);
     }
 
     .about-grid{
       display:grid;
-      grid-template-columns:.75fr 1.25fr;
+      grid-template-columns:.78fr 1.22fr;
       gap:36px;
+      align-items:start;
     }
 
     .about-text{
@@ -258,14 +288,75 @@
       font-size:17px;
     }
 
+    /* FEATURED PROJECT */
+    .featured{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .featured-visual{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .featured-visual img{
+      width:100%;
+      height:100%;
+      min-height:520px;
+      object-fit:cover;
+      transition:transform .8s ease;
+    }
+
+    .featured-visual:hover img{
+      transform:scale(1.03);
+    }
+
+    .featured-copy{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .featured-copy p{
+      color:var(--muted);
+      font-size:16px;
+      margin:0 0 18px;
+    }
+
+    /* PROJECTS */
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:20px;
+      margin-bottom:26px;
+    }
+
+    .section-head p{
+      margin:0;
+      max-width:520px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
     .projects-grid{
       display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
+      grid-template-columns:repeat(12,minmax(0,1fr));
       gap:24px;
-      margin-top:28px;
     }
 
     .card{
+      grid-column:span 6;
       background:var(--panel);
       border:1px solid var(--line);
       border-radius:30px;
@@ -277,22 +368,30 @@
       will-change:transform;
     }
 
+    .card.large{
+      grid-column:span 12;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      min-height:360px;
+    }
+
     .card:hover{
       transform:translateY(-8px);
       border-color:rgba(255,255,255,.18);
       box-shadow:0 24px 55px rgba(0,0,0,.28);
     }
 
-    .card a:first-child{
+    .card-media{
       overflow:hidden;
       display:block;
+      background:#222;
     }
 
     .card img{
       width:100%;
-      height:320px;
+      height:100%;
+      min-height:320px;
       object-fit:cover;
-      background:#222;
       transition:transform .7s ease, filter .5s ease;
     }
 
@@ -303,6 +402,12 @@
 
     .card-body{
       padding:24px;
+    }
+
+    .card.large .card-body{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
 
     .meta{
@@ -334,17 +439,12 @@
       color:var(--text);
     }
 
-    .card h3,.project-head h1{
-      margin:10px 0 0;
-      font-size:28px;
-      line-height:1.1;
-    }
-
-    .card p,.project-copy,.contact p{
+    .card p{
       color:var(--muted);
     }
 
-    .skills,.contact-row{
+    /* SKILLS */
+    .skills{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
@@ -369,13 +469,32 @@
       background:rgba(255,255,255,.02);
     }
 
+    /* CONTACT */
+    .contact{
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:32px;
+      box-shadow:var(--shadow);
+    }
+
+    .contact p{
+      color:var(--muted);
+    }
+
+    .contact-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
     footer{
       padding:28px 0 50px;
       color:rgba(255,255,255,.48);
       font-size:14px;
     }
 
-    /* REVEAL ANIMATIONS */
+    /* REVEAL */
     .reveal{
       opacity:0;
       transform:translateY(34px);
@@ -425,17 +544,6 @@
     .delay-7{transition-delay:.56s}
     .delay-8{transition-delay:.64s}
 
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(16px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
     @media (prefers-reduced-motion: reduce){
       *{
         animation:none !important;
@@ -449,8 +557,20 @@
       }
     }
 
+    @media (max-width:1000px){
+      .featured,
+      .card.large{
+        grid-template-columns:1fr;
+      }
+
+      .featured-visual img{
+        min-height:380px;
+      }
+    }
+
     @media (max-width:900px){
-      .hero-grid,.about-grid,.projects-grid{
+      .hero-grid,
+      .about-grid{
         grid-template-columns:1fr;
       }
 
@@ -458,12 +578,31 @@
         display:none;
       }
 
-      .card img{
-        height:250px;
+      .hero{
+        padding-top:78px;
       }
 
-      .hero{
-        padding-top:72px;
+      .hero-visual img{
+        height:460px;
+      }
+
+      .projects-grid{
+        grid-template-columns:1fr;
+      }
+
+      .card,
+      .card.large{
+        grid-column:auto;
+      }
+
+      .card img{
+        min-height:auto;
+        height:260px;
+      }
+
+      .section-head{
+        flex-direction:column;
+        align-items:start;
       }
     }
   </style>
@@ -478,6 +617,7 @@
 
       <nav class="menu">
         <a href="#apropos">À propos</a>
+        <a href="#projet-phare">Projet phare</a>
         <a href="#projets">Projets</a>
         <a href="#competences">Compétences</a>
         <a href="#contact">Contact</a>
@@ -488,28 +628,26 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="reveal-left visible">
-        <div class="eyebrow">Architecture d’intérieur</div>
+        <div class="eyebrow">Architecture d’intérieur · design d’espace</div>
         <h1>Des espaces sensibles, narratifs et pensés autour de la matière.</h1>
         <p class="lead">
           Je développe une approche de l’espace à la croisée de l’architecture intérieure,
           du mobilier et de la recherche plastique. Mon travail explore les liens entre
-          matière, usage et perception, à travers des projets sensibles, fonctionnels et narratifs.
+          matière, usage et perception à travers des projets sensibles, fonctionnels et narratifs.
         </p>
+
         <div class="actions">
           <a class="btn primary" href="#projets">Voir les projets</a>
           <a class="btn" href="#contact">Me contacter</a>
         </div>
       </div>
 
-      <div class="side-card reveal-right visible">
-        <div class="eyebrow" style="margin-bottom:14px;">Approche</div>
-        <h2>Une pratique entre émotion, fonction et expérimentation.</h2>
-        <ul>
-          <li>Dialogue entre organique et architectural</li>
-          <li>Attention portée aux usages et aux circulations</li>
-          <li>Importance de la narration spatiale</li>
-          <li>Goût pour les matériaux bruts et les formes sobres</li>
-        </ul>
+      <div class="hero-visual reveal-right visible">
+        <img src="images/guinguette-1.png" alt="Projet Guinguette">
+        <div class="hero-note">
+          <strong>Projet mis en avant</strong>
+          <span>Guinguette — structure modulaire, perception du relief et variation spatiale.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -537,14 +675,73 @@
     </div>
   </section>
 
+  <section class="section" id="projet-phare">
+    <div class="container">
+      <div class="eyebrow reveal">Projet phare</div>
+
+      <div class="featured">
+        <a href="guinguette.html" class="featured-visual reveal-left">
+          <img src="images/guinguette-1.png" alt="Guinguette">
+        </a>
+
+        <div class="featured-copy reveal-right">
+          <div>
+            <div class="num">05</div>
+            <h2>Guinguette</h2>
+            <p>
+              Une guinguette modulaire implantée sur un terrain en pente, où la répétition
+              des structures et la hauteur constante des piliers créent un jeu de perception
+              entre uniformité, dénivelé et variation spatiale.
+            </p>
+            <p>
+              Ce projet résume bien mon approche : une attention à la matière, à la lecture
+              de l’espace, aux usages et à la narration.
+            </p>
+          </div>
+
+          <div class="actions" style="margin-top:22px;">
+            <a class="btn primary" href="guinguette.html">Découvrir le projet</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="projets">
     <div class="container">
-      <div class="eyebrow reveal">Sélection</div>
-      <h2 class="reveal">Projets</h2>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow reveal">Sélection</div>
+          <h2 class="reveal">Projets</h2>
+        </div>
+        <p class="reveal">
+          Une sélection de projets en architecture intérieure, micro-architecture,
+          recherche plastique, mobilier et aménagement.
+        </p>
+      </div>
 
       <div class="projects-grid">
-        <article class="card reveal delay-1">
-          <a href="corps-espace.html">
+        <article class="card large reveal delay-1">
+          <a href="retail-chocolat.html" class="card-media">
+            <img src="images/retail-1.png" alt="Retail – Le Chocolat des Français">
+          </a>
+          <div class="card-body">
+            <div>
+              <div class="meta">
+                <div><div class="num">07</div><h3>Retail – Le Chocolat des Français</h3></div>
+                <div class="tag">Design retail</div>
+              </div>
+              <p>
+                Un espace de vente pensé comme un parcours immersif, mettant en scène
+                l’origine, la fabrication et le produit pour transformer l’achat en expérience.
+              </p>
+            </div>
+            <p style="margin-top:18px;"><a class="btn" href="retail-chocolat.html">Voir le projet</a></p>
+          </div>
+        </article>
+
+        <article class="card reveal delay-2">
+          <a href="corps-espace.html" class="card-media">
             <img src="images/corps-1.png" alt="Le corps et l’espace">
           </a>
           <div class="card-body">
@@ -552,27 +749,31 @@
               <div><div class="num">01</div><h3>Le corps et l’espace</h3></div>
               <div class="tag">Recherche plastique</div>
             </div>
-            <p>Dans ce projet, des moulages de mains en béton deviennent des formes architecturales. Le contraste entre la souplesse du corps et la rigidité du matériau interroge le lien entre l’humain, le geste et la construction de l’espace.</p>
+            <p>
+              Des moulages de mains en béton deviennent des formes architecturales.
+            </p>
             <p style="margin-top:16px;"><a class="btn" href="corps-espace.html">Voir le projet</a></p>
           </div>
         </article>
 
-        <article class="card reveal delay-2">
-          <a href="reveur-foret.html">
-            <img src="images/reveur-1.png" alt="Le rêveur de la forêt">
+        <article class="card reveal delay-3">
+          <a href="reveur-foret.html" class="card-media">
+            <img src="images/reveur-4.png" alt="Le rêveur de la forêt">
           </a>
           <div class="card-body">
             <div class="meta">
               <div><div class="num">02</div><h3>Le rêveur de la forêt</h3></div>
               <div class="tag">Installation conceptuelle</div>
             </div>
-            <p>Une écorce en papier mâché brûlée au chalumeau devient le support d’un parcours symbolique composé d’escaliers, d’échelles et d’une porte fermée. Le projet évoque une quête intérieure, entre mémoire, rêve et imaginaire.</p>
+            <p>
+              Une quête intérieure entre mémoire, rêve, matière brûlée et imaginaire.
+            </p>
             <p style="margin-top:16px;"><a class="btn" href="reveur-foret.html">Voir le projet</a></p>
           </div>
         </article>
 
-        <article class="card reveal delay-3">
-          <a href="meuble-separation.html">
+        <article class="card reveal delay-4">
+          <a href="meuble-separation.html" class="card-media">
             <img src="images/meuble-1.png" alt="Meuble de séparation">
           </a>
           <div class="card-body">
@@ -580,13 +781,15 @@
               <div><div class="num">03</div><h3>Meuble de séparation</h3></div>
               <div class="tag">Design de mobilier</div>
             </div>
-            <p>Ce meuble multifonction organise l’espace en réunissant plusieurs usages du quotidien : repas, travail, rangement, assise et coin multimédia. Il structure le volume tout en optimisant les circulations et les ambiances.</p>
+            <p>
+              Un meuble multifonction qui structure l’espace et les usages du quotidien.
+            </p>
             <p style="margin-top:16px;"><a class="btn" href="meuble-separation.html">Voir le projet</a></p>
           </div>
         </article>
 
-        <article class="card reveal delay-4">
-          <a href="cabane-mer.html">
+        <article class="card reveal delay-5">
+          <a href="cabane-mer.html" class="card-media">
             <img src="images/cabane-1.png" alt="Cabane de surveillance en mer">
           </a>
           <div class="card-body">
@@ -594,13 +797,15 @@
               <div><div class="num">04</div><h3>Cabane de surveillance en mer</h3></div>
               <div class="tag">Micro-architecture</div>
             </div>
-            <p>Pensée comme un kit démontable, cette cabane légère s’assemble sans outils, vis ni colle. Son système d’encoches permet une construction simple, transportable et accessible, adaptée à un contexte isolé en bord de mer.</p>
+            <p>
+              Une micro-architecture démontable pensée comme un kit simple et transportable.
+            </p>
             <p style="margin-top:16px;"><a class="btn" href="cabane-mer.html">Voir le projet</a></p>
           </div>
         </article>
 
-        <article class="card reveal delay-5">
-          <a href="guinguette.html">
+        <article class="card reveal delay-6">
+          <a href="guinguette.html" class="card-media">
             <img src="images/guinguette-1.png" alt="Guinguette">
           </a>
           <div class="card-body">
@@ -608,13 +813,15 @@
               <div><div class="num">05</div><h3>Guinguette</h3></div>
               <div class="tag">Aménagement extérieur</div>
             </div>
-            <p>Le projet propose une guinguette modulaire implantée sur un terrain en pente. La répétition des structures et la hauteur constante des piliers créent un jeu de perception entre uniformité, dénivelé et variation spatiale.</p>
+            <p>
+              Une structure répétitive qui joue avec la pente, la perception et le paysage.
+            </p>
             <p style="margin-top:16px;"><a class="btn" href="guinguette.html">Voir le projet</a></p>
           </div>
         </article>
 
-        <article class="card reveal delay-6">
-          <a href="projet-stage.html">
+        <article class="card reveal delay-7">
+          <a href="projet-stage.html" class="card-media">
             <img src="images/stage-1.png" alt="Projet de stage">
           </a>
           <div class="card-body">
@@ -622,36 +829,29 @@
               <div><div class="num">06</div><h3>Projet de stage</h3></div>
               <div class="tag">Aménagement intérieur</div>
             </div>
-            <p>Le projet consiste en l’aménagement des combles d’un bâtiment ancien, avec la création d’un espace de vie regroupant salon, cuisine et salle à manger. Un meuble multifonction structure les circulations, tandis qu’un faux plafond accompagne l’entrée et renforce la perception du volume principal.</p>
+            <p>
+              Réorganisation des combles autour d’un volume principal et d’un meuble structurant.
+            </p>
             <p style="margin-top:16px;"><a class="btn" href="projet-stage.html">Voir le projet</a></p>
           </div>
         </article>
 
-        <article class="card reveal delay-7">
-          <a href="retail-chocolat.html">
-            <img src="images/retail-1.png" alt="Retail – Le Chocolat des Français">
-          </a>
-          <div class="card-body">
-            <div class="meta">
-              <div><div class="num">07</div><h3>Retail – Le Chocolat des Français</h3></div>
-              <div class="tag">Design retail</div>
-            </div>
-            <p>Le projet propose un espace de vente pensé comme un parcours immersif, mettant en avant la transparence de la marque sur ses produits. À travers la mise en scène de l’origine, de la fabrication et du produit, l’aménagement transforme l’achat en une véritable expérience de marque.</p>
-            <p style="margin-top:16px;"><a class="btn" href="retail-chocolat.html">Voir le projet</a></p>
-          </div>
-        </article>
-
-        <article class="card reveal delay-8">
-          <a href="episaveurs.html">
+        <article class="card large reveal delay-8">
+          <a href="episaveurs.html" class="card-media">
             <img src="images/epi-1.png" alt="Episaveurs – Aménagement extérieur">
           </a>
           <div class="card-body">
-            <div class="meta">
-              <div><div class="num">08</div><h3>Episaveurs – Aménagement extérieur</h3></div>
-              <div class="tag">Espace de pause</div>
+            <div>
+              <div class="meta">
+                <div><div class="num">08</div><h3>Episaveurs – Aménagement extérieur</h3></div>
+                <div class="tag">Espace de pause</div>
+              </div>
+              <p>
+                Un espace extérieur protégé par une seconde peau en polycarbonate,
+                filtrant les vues et laissant passer la lumière autour d’assises intégrées.
+              </p>
             </div>
-            <p>Le projet propose un aménagement extérieur destiné aux employés, structuré par une seconde peau en polycarbonate qui accompagne le bâtiment. Cette structure crée un espace de pause protégé, filtre les vues, laisse passer la lumière et s’organise autour d’assises intégrant du végétal.</p>
-            <p style="margin-top:16px;"><a class="btn" href="episaveurs.html">Voir le projet</a></p>
+            <p style="margin-top:18px;"><a class="btn" href="episaveurs.html">Voir le projet</a></p>
           </div>
         </article>
       </div>
@@ -662,6 +862,7 @@
     <div class="container">
       <div class="eyebrow reveal">Compétences</div>
       <h2 class="reveal">Savoir-faire</h2>
+
       <div class="skills">
         <div class="skill reveal delay-1">Architecture intérieure</div>
         <div class="skill reveal delay-2">Aménagement d’espace</div>
@@ -680,7 +881,10 @@
       <div class="contact reveal">
         <div class="eyebrow">Contact</div>
         <h2>Disponible pour stages, collaborations et projets en architecture intérieure.</h2>
-        <p>N’hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
+        <p>
+          N’hésitez pas à me contacter pour toute opportunité ou collaboration.
+        </p>
+
         <div class="contact-row">
           <div class="pill">allanzossi57@gmail.com</div>
           <div class="pill">Reims</div>
