@@ -17,7 +17,6 @@
       --line-strong:rgba(255,255,255,.16);
       --accent:#e7ddcf;
       --shadow:0 24px 60px rgba(0,0,0,.28);
-      --radius:30px;
     }
 
     *{box-sizing:border-box}
@@ -49,7 +48,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      animation:introFadeOut 1.2s ease 1.4s forwards;
+      animation:introFadeOut 1.15s ease 1.35s forwards;
       pointer-events:none;
     }
 
@@ -107,7 +106,7 @@
     .brand{
       opacity:0;
       transform:translateY(16px);
-      animation:heroTextIn .9s cubic-bezier(.2,.7,.2,1) 1.3s forwards;
+      animation:heroTextIn .9s cubic-bezier(.2,.7,.2,1) 1.15s forwards;
     }
 
     .brand small{
@@ -130,7 +129,7 @@
       font-size:14px;
       opacity:0;
       transform:translateY(16px);
-      animation:heroTextIn .9s cubic-bezier(.2,.7,.2,1) 1.45s forwards;
+      animation:heroTextIn .9s cubic-bezier(.2,.7,.2,1) 1.28s forwards;
     }
 
     .menu a{
@@ -213,13 +212,13 @@
     .hero-copy{
       opacity:0;
       transform:translateY(30px);
-      animation:heroTextIn 1s cubic-bezier(.2,.7,.2,1) 1.1s forwards;
+      animation:heroTextIn 1s cubic-bezier(.2,.7,.2,1) 1.05s forwards;
     }
 
     .hero-visual-wrap{
       opacity:0;
       transform:translateX(34px);
-      animation:heroVisualIn 1.1s cubic-bezier(.2,.7,.2,1) 1.25s forwards;
+      animation:heroVisualIn 1.1s cubic-bezier(.2,.7,.2,1) 1.18s forwards;
     }
 
     .eyebrow{
@@ -321,12 +320,7 @@
       height:640px;
       object-fit:cover;
       border-radius:24px;
-      transition:transform 1.2s ease;
       animation:slowZoom 12s ease-in-out infinite alternate;
-    }
-
-    .hero-visual:hover img{
-      transform:scale(1.025);
     }
 
     .hero-note{
@@ -450,7 +444,6 @@
         transform .35s ease,
         border-color .35s ease,
         box-shadow .35s ease;
-      will-change:transform;
     }
 
     .card.large{
@@ -586,7 +579,6 @@
       transition:
         opacity .85s cubic-bezier(.2,.7,.2,1),
         transform .85s cubic-bezier(.2,.7,.2,1);
-      will-change:opacity,transform;
     }
 
     .reveal.visible{
@@ -808,8 +800,8 @@
         <div class="hero-visual">
           <img src="images/epi-1.png" alt="Episaveurs – Aménagement extérieur">
           <div class="hero-note">
-            <strong>Episaveurs</strong>
-            <span>Une seconde peau en polycarbonate pour créer un espace de pause protégé et lumineux.</span>
+            <strong>Approche</strong>
+            <span>Une architecture intérieure pensée comme un dialogue entre matière, usage et perception.</span>
           </div>
         </div>
       </div>
