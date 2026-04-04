@@ -382,92 +382,96 @@
       overflow: hidden;
       box-shadow: var(--shadow);
       animation: heroFloat 9s ease-in-out infinite;
+      min-height: 680px;
     }
 
     .hero-visual::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.06) 45%, transparent 72%);
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.04) 45%, transparent 72%);
       transform: translateX(-120%);
       animation: shine 9s ease-in-out infinite;
       pointer-events: none;
     }
 
-    .hero-visual img {
+    .hero-profile-card {
+      display: flex;
+      align-items: stretch;
+      background:
+        radial-gradient(circle at top right, rgba(231,221,207,.1), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+    }
+
+    .hero-profile-inner {
+      position: relative;
+      z-index: 1;
       width: 100%;
-      height: 680px;
-      object-fit: cover;
       border-radius: 26px;
-      animation: slowZoom 12s ease-in-out infinite alternate;
+      padding: 42px;
+      border: 1px solid rgba(255,255,255,.08);
+      background:
+        linear-gradient(180deg, rgba(18,18,20,.88), rgba(18,18,20,.72));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .hero-note,
-    .hero-stats {
-      position: absolute;
-      background: rgba(10,10,10,.65);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 36px rgba(0,0,0,.18);
-    }
-
-    .hero-note {
-      left: 22px;
-      bottom: 22px;
-      border-radius: 18px;
-      padding: 16px 18px;
-      max-width: 310px;
-    }
-
-    .hero-note strong,
-    .hero-stats strong {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-
-    .hero-note span,
-    .hero-stats span {
-      display: block;
-      font-size: 13px;
+    .hero-profile-label {
+      display: inline-block;
+      width: fit-content;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 999px;
       color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .hero-stats {
-      top: 22px;
-      right: 22px;
-      border-radius: 20px;
-      padding: 14px 18px;
-      min-width: 182px;
-    }
-
-    .hero-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .hero-stats-grid div {
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 10px;
-    }
-
-    .hero-stats-grid b {
-      display: block;
-      font-size: 20px;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .hero-stats-grid small {
-      color: var(--soft);
-      font-size: 11px;
-      letter-spacing: .08em;
+      font-size: 12px;
       text-transform: uppercase;
+      letter-spacing: .16em;
+      background: rgba(255,255,255,.03);
     }
 
+    .hero-profile-title {
+      margin: 0 0 16px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: .98;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-profile-text {
+      margin: 0;
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-profile-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .hero-profile-item {
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      padding: 18px 18px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .hero-profile-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .hero-profile-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    
     .section {
       padding: 92px 0;
       border-bottom: 1px solid var(--line);
@@ -620,43 +624,7 @@
       font-size: 14px;
     }
 
-    .projects-toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 26px;
-      flex-wrap: wrap;
-    }
-
-    .projects-count {
-      color: var(--soft);
-      font-size: 14px;
-    }
-
-    .filter-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .filter-pills button {
-      border: 1px solid var(--line);
-      background: transparent;
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 10px 14px;
-      cursor: pointer;
-      transition: all .25s ease;
-    }
-
-    .filter-pills button:hover,
-    .filter-pills button.active {
-      color: var(--text);
-      border-color: var(--line-strong);
-      background: rgba(255,255,255,0.03);
-    }
-
+    
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -685,8 +653,7 @@
       box-shadow: 0 24px 55px rgba(0,0,0,.28);
     }
 
-    .card.is-hidden { display: none; }
-
+    
     .card-media {
       overflow: hidden;
       display: block;
@@ -935,8 +902,8 @@
         min-height: 420px;
       }
 
-      .hero-visual img {
-        height: 560px;
+      .hero-visual {
+        min-height: auto;
       }
     }
 
@@ -980,19 +947,12 @@
         font-size: 16px;
       }
 
-      .hero-visual img {
-        height: 460px;
-      }
-
-      .hero-note,
-      .hero-stats {
-        position: static;
-        margin-top: 14px;
+      .hero-profile-inner {
+        padding: 26px;
       }
 
       .hero-visual {
-        display: flex;
-        flex-direction: column;
+        min-height: auto;
       }
 
       .section {
@@ -1077,30 +1037,29 @@
         </div>
 
         <div class="hero-visual-wrap">
-          <div class="hero-visual">
-            <img src="images/epi-1.png" alt="Vue architecturale du projet Episaveurs" />
+          <div class="hero-visual hero-profile-card">
+            <div class="hero-profile-inner">
+              <div class="hero-profile-label">Profil</div>
+              <h2 class="hero-profile-title">Allan Zossi</h2>
+              <p class="hero-profile-text">
+                Étudiant en architecture intérieure, je développe une pratique
+                sensible entre design d’espace, mobilier et recherche plastique.
+              </p>
 
-            <div class="hero-stats">
-              <strong>Univers</strong>
-              <span>Espaces sobres, sensibles et cohérents avec leur contexte.</span>
-              <div class="hero-stats-grid">
-                <div>
-                  <b>08</b>
-                  <small>Projets</small>
+              <div class="hero-profile-list">
+                <div class="hero-profile-item">
+                  <strong>Approche</strong>
+                  <span>Concevoir des espaces lisibles, sensibles et cohérents avec leur contexte.</span>
                 </div>
-                <div>
-                  <b>04</b>
-                  <small>Domaines</small>
+                <div class="hero-profile-item">
+                  <strong>Champs de travail</strong>
+                  <span>Architecture intérieure, mobilier, micro-architecture et recherche conceptuelle.</span>
+                </div>
+                <div class="hero-profile-item">
+                  <strong>Recherche</strong>
+                  <span>Explorer les liens entre matière, usage, lumière et perception.</span>
                 </div>
               </div>
-            </div>
-
-            <div class="hero-note">
-              <strong>Profil</strong>
-              <span>
-                Étudiant en architecture intérieure, je développe une pratique
-                entre design d’espace, mobilier et recherche plastique.
-              </span>
             </div>
           </div>
         </div>
@@ -1194,17 +1153,6 @@
             Une sélection de projets en architecture intérieure, micro-architecture,
             recherche plastique, mobilier et aménagement.
           </p>
-        </div>
-
-        <div class="projects-toolbar reveal">
-          <div class="projects-count"><span id="projects-count">8</span> projets affichés</div>
-          <div class="filter-pills" aria-label="Filtres des projets">
-            <button class="active" type="button" data-filter="all">Tous</button>
-            <button type="button" data-filter="architecture">Architecture intérieure</button>
-            <button type="button" data-filter="mobilier">Mobilier</button>
-            <button type="button" data-filter="concept">Conceptuel</button>
-            <button type="button" data-filter="micro">Micro-architecture</button>
-          </div>
         </div>
 
         <div class="projects-grid">
@@ -1420,30 +1368,7 @@
       });
     }
 
-    const filterButtons = document.querySelectorAll('[data-filter]');
-    const projectCards = document.querySelectorAll('.projects-grid .card');
-    const projectsCount = document.getElementById('projects-count');
-
-    function updateProjectCount() {
-      const visibleCount = [...projectCards].filter(card => !card.classList.contains('is-hidden')).length;
-      if (projectsCount) projectsCount.textContent = visibleCount;
-    }
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const filter = button.dataset.filter;
-
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        projectCards.forEach(card => {
-          const category = card.dataset.category;
-          const show = filter === 'all' || category === filter;
-          card.classList.toggle('is-hidden', !show);
-        });
-
-        updateProjectCount();
-      });
+          });
     });
 
     const sections = document.querySelectorAll('main section[id]');
