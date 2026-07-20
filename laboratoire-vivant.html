@@ -335,17 +335,9 @@
 
     <!-- HERO TOP -->
     <div class="hero-img">
-      <img src="images/labo-1.png" alt="Le laboratoire du vivant – vue de couverture de la serre">
+      <img src="images/labo-1.png" alt="Le laboratoire du vivant – serre vue d'ensemble dans son cadre paysager">
     </div>
     <p class="hero-caption">Une architecture au service du végétal.</p>
-
-    <div class="section-title">Recherches et intentions</div>
-    <div class="gallery">
-      <div class="card"><img src="images/labo-2.png" alt="Croquis de recherche – volumétrie de la serre"></div>
-      <div class="card"><img src="images/labo-3.png" alt="Croquis de recherche – élévation et vide sanitaire"></div>
-      <div class="card"><img src="images/labo-4.png" alt="Croquis de recherche – variations volumétriques"></div>
-      <div class="card"><img src="images/labo-5.png" alt="Croquis de recherche – mobilier sur-mesure"></div>
-    </div>
 
     <div class="section-title">Concept final</div>
     <div class="gallery">
@@ -384,6 +376,18 @@
       </div>
     </div>
 
+    <div class="section-title">Mobilier sur-mesure</div>
+    <div class="gallery">
+      <div class="card">
+        <img src="images/labo-19.png" alt="Mobilier sur-mesure – hauteurs de travail adaptées au jardinier">
+        <div class="card-label">Le mobilier accompagne les gestes du jardinier grâce à différentes hauteurs de travail adaptées à la préparation, à l'expérimentation et au rempotage des végétaux.</div>
+      </div>
+      <div class="card">
+        <img src="images/labo-20.png" alt="Mobilier interface – rangements, kitchenette et espace vestiaire">
+        <div class="card-label">Véritable interface entre les espaces, le meuble combine fonctions de rangement, espace de pause et support collaboratif pour accompagner les usages quotidiens du laboratoire.</div>
+      </div>
+    </div>
+
     <div class="section-title">Implantation, plans et élévations</div>
     <!-- INTERACTIONS -->
     <div class="interactive-section">
@@ -402,7 +406,7 @@
           <img id="viewerBImg" src="images/labo-13.png" alt="Séquence de rendus intérieurs du laboratoire du vivant">
         </div>
         <div class="interactive-caption">
-          <span class="interactive-badge" id="viewerBLabel">Ambiance 1 / 3</span>
+          <span class="interactive-badge" id="viewerBLabel">Ambiance 1 / 6</span>
           <span class="hint">Clique sur l'image pour voir la suivante</span>
         </div>
       </div>
@@ -443,7 +447,10 @@
   const viewerBImages = [
     "images/labo-13.png",
     "images/labo-14.png",
-    "images/labo-15.png"
+    "images/labo-15.png",
+    "images/labo-16.png",
+    "images/labo-17.png",
+    "images/labo-18.png"
   ];
 
   let viewerAIndex = 0;
@@ -466,7 +473,7 @@
   viewerB.addEventListener("click", () => {
     viewerBIndex = (viewerBIndex + 1) % viewerBImages.length;
     viewerBImg.src = viewerBImages[viewerBIndex];
-    viewerBLabel.textContent = `Ambiance ${viewerBIndex + 1} / 3`;
+    viewerBLabel.textContent = `Ambiance ${viewerBIndex + 1} / 6`;
   });
 </script>
 </body>
